@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>spring学习 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="IOC控制反转、DI依赖注入Spring基础知识学习笔记(一)，内容包括：   Spring入门案例  IOC控制反转理解 属性注入的不同方式   注入不同类型的属性值   自动装配与注解开发  1. Spring概述开源的免费框架，是一个容器，可以管理所有的组件(类)；  轻量级的、非入侵的框架，不依赖于Spring的API  控制反转(IOC)和面向切面编程(AOP) 支持事务处理，支持对框架">
+  <meta name="description" content="IOC控制反转、DI依赖注入Spring基础知识学习笔记(一)，内容包括：   Spring入门案例  IOC控制反转理解 属性注入的不同方式  注入不同类型的属性值  自动装配与注解开发">
 <meta property="og:type" content="article">
 <meta property="og:title" content="spring学习">
-<meta property="og:url" content="http://example.com/2021/08/15/ssm%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:url" content="http://example.com/2021/08/15/spring%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="IOC控制反转、DI依赖注入Spring基础知识学习笔记(一)，内容包括：   Spring入门案例  IOC控制反转理解 属性注入的不同方式   注入不同类型的属性值   自动装配与注解开发  1. Spring概述开源的免费框架，是一个容器，可以管理所有的组件(类)；  轻量级的、非入侵的框架，不依赖于Spring的API  控制反转(IOC)和面向切面编程(AOP) 支持事务处理，支持对框架">
+<meta property="og:description" content="IOC控制反转、DI依赖注入Spring基础知识学习笔记(一)，内容包括：   Spring入门案例  IOC控制反转理解 属性注入的不同方式  注入不同类型的属性值  自动装配与注解开发">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="e:/blog/source_posts/ssm学习图片/image-20210910163600951.png">
 <meta property="og:image" content="e:/blog/source_posts/ssm学习图片/image-20210910171228862.png">
 <meta property="og:image" content="e:/blog/source_posts/ssm学习图片/image-20210910172506491.png">
 <meta property="article:published_time" content="2021-08-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-09-10T09:52:34.470Z">
+<meta property="article:modified_time" content="2021-09-10T09:55:12.347Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="e:/blog/source_posts/ssm学习图片/image-20210910163600951.png">
@@ -158,7 +158,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-ssm学习" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-spring学习" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -170,7 +170,7 @@
   
 
         
-        <a href="/2021/08/15/ssm%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+        <a href="/2021/08/15/spring%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
   	<time datetime="2021-08-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-15</time>
 </a>
         
@@ -183,14 +183,14 @@
 <li>Spring入门案例 </li>
 <li>IOC控制反转理解</li>
 <li>属性注入的不同方式 </li>
-<li> 注入不同类型的属性值 </li>
-<li> 自动装配与注解开发</li>
+<li>注入不同类型的属性值 </li>
+<li>自动装配与注解开发</li>
 </ol>
+<span id="more"></span>
+
 <h2 id="1-Spring概述"><a href="#1-Spring概述" class="headerlink" title="1. Spring概述"></a>1. Spring概述</h2><p>开源的免费框架，是一个容器，可以管理所有的组件(类)；</p>
 <p> 轻量级的、非入侵的框架，不依赖于Spring的API</p>
 <p> 控制反转(IOC)和面向切面编程(AOP) 支持事务处理，支持对框架整合 组件化、一站式 </p>
-<span id="more"></span>
-
 <p>官网： <a target="_blank" rel="noopener" href="https://spring.io/">https://spring.io</a> </p>
 <p>文档：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/5.2.5.RELEASE/spring-framework-reference/core.html#s">https://docs.spring.io/spring/docs/5.2.5.RELEASE/spring-framework-reference/core.html#s</a> pring-core </p>
 <p>【总结】：Spring是一个轻量级的、控制反转和面向切面编程的框架</p>
@@ -871,7 +871,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/08/15/ssm%E5%AD%A6%E4%B9%A0/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/08/15/spring%E5%AD%A6%E4%B9%A0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -883,20 +883,6 @@
 </article>
 
   
-<nav id="article-nav">
-  
-    <a href="/2021/09/10/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">

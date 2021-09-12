@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="mysql," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="简介​        自己整理的mysql笔记。 ​        配套视频使用更佳：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1fx411X7BD?spm_id_from&#x3D;333.999.0.0 ​        更多b站java自学视频收藏：https:&#x2F;&#x2F;space.bilibili.com&#x2F;8383710&#x2F;favlist?fid&#x3D;1335661810&amp;fty">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql">
+<meta property="og:url" content="http://icecfish.github.io/2021/06/05/mysql/index.html">
+<meta property="og:site_name" content="Icefish">
+<meta property="og:description" content="简介​        自己整理的mysql笔记。 ​        配套视频使用更佳：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1fx411X7BD?spm_id_from&#x3D;333.999.0.0 ​        更多b站java自学视频收藏：https:&#x2F;&#x2F;space.bilibili.com&#x2F;8383710&#x2F;favlist?fid&#x3D;1335661810&amp;fty">
+<meta property="og:locale">
+<meta property="og:image" content="http://icecfish.github.io/2021/06/05/mysql/image-20210912104154791.png">
+<meta property="article:published_time" content="2021-06-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-09-12T03:02:04.815Z">
+<meta property="article:author" content="Zcb">
+<meta property="article:tag" content="mysql">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://icecfish.github.io/2021/06/05/mysql/image-20210912104154791.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://icecfish.github.io/2021/06/05/mysql/"/>
+
+
+
+
+
+  <title>mysql | Icefish</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Icefish</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://icecfish.github.io/2021/06/05/mysql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/18cc395b668d48888eaca3a0cceec50a_th.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Icefish">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mysql</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-06-05T00:00:00+08:00">
+                2021-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>​        自己整理的mysql笔记。</p>
+<p>​        配套视频使用更佳：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1fx411X7BD?spm_id_from=333.999.0.0">https://www.bilibili.com/video/BV1fx411X7BD?spm_id_from=333.999.0.0</a></p>
+<p>​        更多b站java自学视频收藏：<a target="_blank" rel="noopener" href="https://space.bilibili.com/8383710/favlist?fid=1335661810&amp;ftype=create">https://space.bilibili.com/8383710/favlist?fid=1335661810&amp;ftype=create</a></p>
+<span id="more"></span>
+
+<h1 id="表：-table"><a href="#表：-table" class="headerlink" title="表： table"></a>表： table</h1><p>表： table是数据库的基本组成单元，所有的数据都依表格的形式组织，目的是可读性强。<br>一个表包括行和列：<br>行：被称为数据/记录I（data）<br>列：被称为字段</p>
+<p>学号（int）   姓名（varchar） 年龄（int）</p>
+<p>110              张三                    20<br>120              李四                    21</p>
+<p>每一个字段应该包括那些属性？</p>
+<p>字段名、数据类型、相关的约束。</p>
+<p>DQL（数据查询语言）查询语句。凡是select语句都是DQL<br>DML（数据操作语言）insert delete update 对表当中的数据惊醒增删改<br>DDL （数据定义语言）create drop alter 对表结构的增删改<br>TCL  （事务控制语言） commit提交事务，rollback回归事务<br>DCL （数据控制语言）grant授权、revoke撤销权限</p>
+<h1 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h1><h2 id="简单的查询语句"><a href="#简单的查询语句" class="headerlink" title="简单的查询语句"></a>简单的查询语句</h2><p>语法格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 字段名1，字段名2，字段名3，...from 表名；</span><br></pre></td></tr></table></figure>
+
+<p>说明：<br>字段可以参与数学运算。<br>不区分大小写。<br>必须以“；”结尾。</p>
+<p>条件查询：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select</span><br><span class="line">字段，字段...</span><br><span class="line">from</span><br><span class="line">表名</span><br><span class="line">where</span><br><span class="line">条件；</span><br></pre></td></tr></table></figure>
+
+<p>执行顺序： 先from，再where 再select。<br>不等于可以用 &lt;&gt; 或者 !=.</p>
+<p>范围可以用 &gt;= and &lt;=<br>或者  between and 闭区间。</p>
+<p>模糊查找<br>%代表任意。<br>_代表单个字符。</p>
+<p>排序</p>
+<p><code>order by</code></p>
+<h2 id="关于null"><a href="#关于null" class="headerlink" title="关于null"></a>关于null</h2><p>null和任何数据做运算结构都为null。</p>
+<p>处理null的方式：<br>if（可能出现null的字段，所要处理的方式）;</p>
+<p>多行函数（分组函数）自动忽略null<br>分组函数不可直接用于where子句中</p>
+<p>分组函数一般都会和group by一起使用。<br>当一条sql语句没有group by的话，整张表的数据会自成一组。</p>
+<p>使用group by分组只能查询分组字段和分组函数。若不这样mysql不报错但数据无意义。</p>
+<p>having必须和group by一起用。</p>
+<p>distinct 去除重复记录。且只能用在所有字段的最前面。</p>
+<h2 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h2><p>内连接：<br>    等值连接<br>    非等值连接<br>    子链接<br>外连接：<br>    左外连接<br>    右外连接<br>全连接</p>
+<p>sql 92写法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 字段，字段 from 表，表</span><br></pre></td></tr></table></figure>
+
+<p>笛卡尔积现象：当两张表进行连接查询的时候，没有任何条件进行限制，最终的查询条数是两张记录条数的乘积。</p>
+<p>关于表的别名：<br>表的别名好处？<br>第一执行效率高<br>第二可读性好。</p>
+<p>避免笛卡尔积现象，但是匹配次数不会减少，只会显示有效记录。</p>
+<p>sql99写法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select </span><br><span class="line">	字段，字段 </span><br><span class="line">from </span><br><span class="line">	表 </span><br><span class="line">（inner） join 	</span><br><span class="line">	表 </span><br><span class="line">on 	</span><br><span class="line">	条件</span><br></pre></td></tr></table></figure>
+
+<p>Sql92语法和sql99语法的区别：</p>
+<p>99语法可以做到表的连接和查询条件分离，特别是多个表进行连接的时候，会比sql92更清晰</p>
+<p>连接分类：</p>
+<p>内链接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">表1 inner join 表2 on 关联条件</span><br></pre></td></tr></table></figure>
+
+<p>做连接查询的时候一定要写上关联条件,inner 可以省略</p>
+<p>外连接</p>
+<p>左外连接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">表1 left outer join 表2 on 关联条件</span><br></pre></td></tr></table></figure>
+
+<p>做连接查询的时候一定要写上关联条件,outer 可以省略</p>
+<p>右外连接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">表1 right outer join 表2 on 关联条件</span><br></pre></td></tr></table></figure>
+
+<p>做连接查询的时候一定要写上关联条件,outer 可以省略</p>
+<p>左外连接（左连接）和右外连接（右连接）的区别：</p>
+<p>左连接以左面的表为准和右边的表比较，和左表相等的不相等都会显示出来，右表符合条件的显示,不符合条件的不显示</p>
+<p>右连接恰恰相反，以上左连接和右连接也可以加入outer关键字，但一般不建议这种写法，</p>
+<p>外连接<br>左外连接：左边为主表。<br>右外连接：右边为主表。<br>主表内容会显示完全。</p>
+<p>union关键字<br>可以完成一些where做不了的事 例如：将两个完全不相干的表合成一个表.<br>但是不能合成列数不相等的表。</p>
+<p>limit<br>limit 显示  第几页开始（0开始），显示几页；<br>每页显示pagesize条记录：<br>第pageno页：（pageNo-1）*pagesize,pagesize</p>
+<h1 id="创建删除表，以及字段的增删改"><a href="#创建删除表，以及字段的增删改" class="headerlink" title="创建删除表，以及字段的增删改"></a>创建删除表，以及字段的增删改</h1><h2 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h2><p>语法格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create table 表名(</span><br><span class="line">       字段名1 数据类型，</span><br><span class="line">       字段名2 数据类型，</span><br><span class="line">       字段名3 数据类型，</span><br><span class="line">       ...</span><br><span class="line">   );</span><br></pre></td></tr></table></figure>
+
+
+<p>常见数据类型：<br>    int    整数型  int<br>    float    浮点型  float<br>    bigint    长整型  long<br>    char    定长字符串   string<br>    varchar    可变长字符串    StringBuffer/StringBuilder<br>     date    日期类型    java.sql.date<br>    BLOG    二进制大对象（存储图片、视频等流媒体信息）<br>    CLOG    字符大对象（存储较大文本，比如，可以存储4g的字符串）</p>
+<p>定长用char<br>长度不确定用varchar</p>
+<p>表名在数据库中一般建议以：t_或者tbl_开始<br>创建学生表：<br>    学生信息包括：<br>         学号、姓名、性别、班级编号、生日<br>         学号：bigint<br>         姓名：varchar<br>         性别：char<br>         班级编号：int<br>         生日：char</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">create table t_student(</span><br><span class="line">    no bigint,</span><br><span class="line">    name varchar(255),</span><br><span class="line">    sex char(1) default 1,</span><br><span class="line">    classno varchar(255),</span><br><span class="line">    birth char(10)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="insert语句插入数据"><a href="#insert语句插入数据" class="headerlink" title="insert语句插入数据"></a>insert语句插入数据</h2><p>语法格式<br>insert into 表名（字段名1，字段名2，字段名3，。。。。）values（值1，值2，值3，。。。）<br>要求：字段的数量和值的数量相同，并且数据类型要对应相同。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into t_student(no,name,sex,classno,birth) values(1,&#x27;zhangsan&#x27;,&#x27;1&#x27;,&#x27;gaosan1ban&#x27;,&#x27;1950-10-12&#x27;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop table if exists 表名</span><br></pre></td></tr></table></figure>
+
+<p>字段可以省略不写，但是value必须写全。</p>
+<p>表的复制<br>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table 表名 as select语句；</span><br></pre></td></tr></table></figure>
+
+<p>将查询结果当做表来创建。</p>
+<p>insert into dept1 select * from dept;  </p>
+<h2 id="修改语句：update"><a href="#修改语句：update" class="headerlink" title="修改语句：update"></a>修改语句：update</h2><p>语法格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update 表名 set 字段名1=值1，字段名2=值2... where 条件；</span><br></pre></td></tr></table></figure>
+
+<p>注意：没有条件整张表数据全部更新</p>
+<h2 id="删除语句：-delete"><a href="#删除语句：-delete" class="headerlink" title="删除语句： delete"></a>删除语句： delete</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from 表名 where 条件；</span><br></pre></td></tr></table></figure>
+
+<p>不写条件就是删除整个表。</p>
+<h2 id="怎么删除大表？"><a href="#怎么删除大表？" class="headerlink" title="怎么删除大表？"></a>怎么删除大表？</h2><p>truncate table 表名;</p>
+<h2 id="表的约束"><a href="#表的约束" class="headerlink" title="表的约束"></a>表的约束</h2><p>约束</p>
+<ul>
+<li>非空约束：not null 约束的字段不能NULL</li>
+<li>唯一约束：unique 约束的字段不能重复</li>
+<li>主键约束：primary key约束的字段既不能伟NULL,也不能重复简称pk</li>
+<li>外键约束：foreign key</li>
+<li>检查约束：（check）:mysql没有</li>
+</ul>
+<p>创建表的时候在类型后面加 unique。<br>组合唯一约束在字段后面加unique（字段，字段）</p>
+<p>主键<br>主键约束：primary key<br>主键字段:  id字段添加primary key 之后，id叫做主键字段<br>主键值： 主键字段中的每一个值都是主键值</p>
+<p>主键有什么作用<br>表的设计三范式中，第一范式是要求任何一张表都应该有主键。<br>主键值是这行记录的唯一标识。</p>
+<p>主键的分类。<br>根据主键字段的字段数量来划分：<br>单一主键<br>复合主键（多个字段联合起来添加一个主键约束）<br>根据主键性质来划分：<br>自然主键<br>业务主键：用带有业务的字段设置为主键（不建议）</p>
+<p>一张表的主键约束只能有一个<br>在主键约束后面加上 auto_increment 自增。<br>外键：<br>foreign（）references 表名（）<br>父表的属性必须是唯一的。</p>
+<h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><p>事务就是将几个dml语句绑定</p>
+<p>事务可以保证多个操作原子性，要么全成功，要么全失败。对于数据库来说事务保证批量的DML要么全成功，要么全失败。</p>
+<h2 id="事务具有四个特征ACID"><a href="#事务具有四个特征ACID" class="headerlink" title="事务具有四个特征ACID"></a>事务具有四个特征ACID</h2><p>a)     原子性（Atomicity）</p>
+<p>整个事务中的所有操作，必须作为一个单元全部完成（或全部取消）。</p>
+<p>b)    一致性（Consistency）</p>
+<p>在事务开始之前与结束之后，数据库都保持一致状态。</p>
+<p>c)     隔离性(Isolation)</p>
+<p>一个事务不会影响其他事务的运行。</p>
+<p>d)    持久性(Durability)</p>
+<p>在事务完成以后，该事务对数据库所作的更改将持久地保存在数据库之中，并不会被回滚。</p>
+<p>事务中存在一些概念：</p>
+<p>a)     事务（Transaction）：一批操作（一组DML）</p>
+<p>b)    开启事务（Start Transaction）</p>
+<p>c)     回滚事务（rollback）</p>
+<p>d)    提交事务（commit）</p>
+<p>e)     SET AUTOCOMMIT：禁用或启用事务的自动提交模式</p>
+<p>当执行DML语句是其实就是开启一个事务</p>
+<p>关于事务的回滚需要注意：只能回滚insert、delete和update语句，不能回滚select（回滚select没有任何意义），对于create、drop、alter这些无法回滚.</p>
+<p>事务只对DML有效果。</p>
+<h2 id="事务隔离级别："><a href="#事务隔离级别：" class="headerlink" title="事务隔离级别："></a>事务隔离级别：</h2><p>•     事务的隔离级别决定了事务之间可见的级别。</p>
+<p>•     当多个客户端并发地访问同一个表时，可能出现下面的一致性问题：</p>
+<p>–     脏读取（Dirty Read）</p>
+<p>​     一个事务开始读取了某行数据，但是另外一个事务已经更新了此数据但没有能够及时提交，这就出现了脏读取。</p>
+<p>–     不可重复读（Non-repeatable Read） </p>
+<p>​     在同一个事务中，同一个读操作对同一个数据的前后两次读取产生了不同的结果，这就是不可重复读。</p>
+<p>–     幻像读（Phantom Read）</p>
+<p>​     幻像读是指在同一个事务中以前没有的行，由于其他事务的提交而出现的新行。</p>
+<h3 id="四个隔离级别"><a href="#四个隔离级别" class="headerlink" title="四个隔离级别"></a>四个隔离级别</h3><p>第一级别：读未提交<br>对方事务还未提交，我们当前事务可以读取到对方未提交的数据<br>读未提交存在脏读现象，表示读到到了脏的数据/</p>
+<p>第二级别：读已提交<br>对方事务提交之后的数据我方可以读到。<br>但是不可重复读</p>
+<p>第三级别：可重复读<br>解决了不可重复读问题</p>
+<p>第四级别：序列化读/串行化读<br>解决了所有问题，<br>效率低，摇排队</p>
+<p>oracle默认读已提交<br>mysql默认可重复读</p>
+<p>演示事务<br>mysql中的事务是自动提交的</p>
+<p>演示读未提交<br>1演示read uncommitted<br>设置事务全局隔离级别： set global transaction isolation level read uncommitted;<br>查看事务全局隔离级别：mysql&gt; select @@global.transaction_isolation;</p>
+<p>2演示read committed</p>
+<p>3repeatable</p>
+<p>4serilizable</p>
+<h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><h2 id="索引原理"><a href="#索引原理" class="headerlink" title="索引原理"></a>索引原理</h2><p>索引被用来快速找出在一个列上用一特定值的行。没有索引，MySQL不得不首先以第一条记录开始，然后读完整个表直到它找出相关的行。表越大，花费时间越多。对于一个有序字段，可以运用二分查找（Binary Search），这就是为什么性能能得到本质上的提高。MYISAM和INNODB都是用B+Tree作为索引结构</p>
+<p>（主键，unique 都会默认的添加索引）</p>
+<h2 id="索引的应用"><a href="#索引的应用" class="headerlink" title="索引的应用"></a>索引的应用</h2><h3 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h3><p>如果未使用索引，我们查询 工资大于 1500的会执行全表扫描</p>
+<p><strong>什么时候需要给字段添加索引：</strong></p>
+<p>**-**<strong>表中该字段中的数据量庞大</strong></p>
+<p>  **-<strong><strong>经常被检索，经常出现在where</strong></strong>子句中的字段**</p>
+<p>  **-<strong><strong>经常被DML</strong></strong>操作的字段不建议添加索引**</p>
+<p><strong>索引等同于一本书的目录</strong></p>
+<p><strong>主键会自动添加索引，所以尽量根据主键查询效率较高。</strong></p>
+<p>如经常根据sal进行查询，并且遇到了性能瓶颈，首先查看程序是否存算法问题，再考虑对sal建立索引，建立索引如下：</p>
+<p> 1、create unique index 索引名 on 表名(列名); </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create unique index u_ename on emp(ename);</span><br></pre></td></tr></table></figure>
+
+<p> 2、alter table 表名 add unique index 索引名 (列名); </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create index test_index on emp (sal);  </span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="查看索引"><a href="#查看索引" class="headerlink" title="查看索引"></a>查看索引</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show index from emp;  </span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用索引"><a href="#使用索引" class="headerlink" title="使用索引"></a>使用索引</h3><p>注意一定不可以用select * … 可以看到type!=all了，说明使用了索引</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">explain select sal from emp where sal &gt; 1500;  </span><br></pre></td></tr></table></figure>
+
+<p>条件中的sal使用了索引</p>
+<p>如下图：假如我们要查找sal大于1500的所有行，那么可以扫描索引，索引时排序的，结果得出7行，我们知道不会再有匹配的记录，可以退出了。<br> 如果查找一个值，它在索引表中某个中间点以前不会出现，那么也有找到其第一个匹配索引项的定位算法，而不用进行表的顺序扫描（如二分查找法）。<br> 这样，可以快速定位到第一个匹配的值，以节省大量搜索时间。数据库利用了各种各样的快速定位索引值的技术，通常这些技术都属于DBA的工作。</p>
+<h3 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP INDEX index_name ON  talbe_name  ALTER TABLE table_name DROP  INDEX index_name  ALTER TABLE table_name DROP  PRIMARY KEY </span><br></pre></td></tr></table></figure>
+
+<p>其中，前两条语句是等价的，删除掉table_name中的索引index_name。  第3条语句只在删除PRIMARY KEY索引时使用，因为一个表只可能有一个PRIMARY KEY索引，   </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE EMP DROP  INDEX test_index;    </span><br></pre></td></tr></table></figure>
+
+<p> 删除后就不再使用索引了，查询会执行全表扫描。         </p>
+<h1 id="数据库设计三范式（解决数据冗余）"><a href="#数据库设计三范式（解决数据冗余）" class="headerlink" title="数据库设计三范式（解决数据冗余）"></a>数据库设计三范式（解决数据冗余）</h1><h2 id="第一范式："><a href="#第一范式：" class="headerlink" title="第一范式："></a>第一范式：</h2><p>任何一张表都应该有主键，并且每一个字段的原子性不可再分</p>
+<p>关于第一范式，每一行必须唯一，也就是每个表必须有主键，这是我们数据库设计的最基本要求，主要通常采用数值型或定长字符串表示，关于列不可再分，应该根据具体的情况来决定。如联系方式，为了开发上的便利行可能就采用一个字段了。</p>
+<p>不符合第一范式的示例</p>
+<table>
+<thead>
+<tr>
+<th>学生编号</th>
+<th>学生姓名</th>
+<th>联系方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1001</td>
+<td>张三</td>
+<td><a href="mailto:&#x7a;&#x73;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#x6d;">&#x7a;&#x73;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#x6d;</a>,1359999999</td>
+</tr>
+<tr>
+<td>1002</td>
+<td>李四</td>
+<td><a href="mailto:ls@gmail.com">ls@gmail.com</a>,13699999999</td>
+</tr>
+<tr>
+<td>1001</td>
+<td>王五</td>
+<td><a href="mailto:&#x77;&#x77;&#x40;&#49;&#54;&#51;&#x2e;&#110;&#x65;&#x74;">&#x77;&#x77;&#x40;&#49;&#54;&#51;&#x2e;&#110;&#x65;&#x74;</a>,13488888888</td>
+</tr>
+</tbody></table>
+<p>存在问题：</p>
+<p>n 最后一条记录和第一条重复（不唯一，没有主键）</p>
+<p>n 联系方式字段可以再分，不是原子性的</p>
+<table>
+<thead>
+<tr>
+<th>学生编号(pk)</th>
+<th>学生姓名</th>
+<th>email</th>
+<th>联系电话</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1001</td>
+<td>张三</td>
+<td><a href="mailto:&#122;&#115;&#64;&#103;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#122;&#115;&#64;&#103;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a></td>
+<td>1359999999</td>
+</tr>
+<tr>
+<td>1002</td>
+<td>李四</td>
+<td><a href="mailto:ls@gmail.com">ls@gmail.com</a></td>
+<td>13699999999</td>
+</tr>
+<tr>
+<td>1003</td>
+<td>王五</td>
+<td><a href="mailto:ww@163.net">ww@163.net</a></td>
+<td>13488888888</td>
+</tr>
+</tbody></table>
+<h2 id="第二范式："><a href="#第二范式：" class="headerlink" title="第二范式："></a>第二范式：</h2><p>建立在第一范式之上，所有非主键字段完全依赖主键，不能产生部分依赖</p>
+<p>示例：</p>
+<table>
+<thead>
+<tr>
+<th>学生编号</th>
+<th>学生姓名</th>
+<th>教师编号</th>
+<th>教师姓名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1001</td>
+<td>张三</td>
+<td>001</td>
+<td>王老师</td>
+</tr>
+<tr>
+<td>1002</td>
+<td>李四</td>
+<td>002</td>
+<td>赵老师</td>
+</tr>
+<tr>
+<td>1003</td>
+<td>王五</td>
+<td>001</td>
+<td>王老师</td>
+</tr>
+<tr>
+<td>1001</td>
+<td>张三</td>
+<td>002</td>
+<td>赵老师</td>
+</tr>
+</tbody></table>
+<p>确定主键：</p>
+<table>
+<thead>
+<tr>
+<th>学生编号(PK)</th>
+<th>教师编号(PK)</th>
+<th>学生姓名</th>
+<th>教师姓名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1001</td>
+<td>001</td>
+<td>张三</td>
+<td>王老师</td>
+</tr>
+<tr>
+<td>1002</td>
+<td>002</td>
+<td>李四</td>
+<td>赵老师</td>
+</tr>
+<tr>
+<td>1003</td>
+<td>001</td>
+<td>王五</td>
+<td>王老师</td>
+</tr>
+<tr>
+<td>1001</td>
+<td>002</td>
+<td>张三</td>
+<td>赵老师</td>
+</tr>
+</tbody></table>
+<p>以上虽然确定了主键，但此表会出现大量的冗余，主要涉及到的冗余字段为“学生姓名”和“教师姓名”，出现冗余的原因在于，学生姓名部分依赖了主键的一个字段学生编号，而没有依赖教师编号，而教师姓名部门依赖了主键的一个字段教师编号，这就是第二范式部分依赖。</p>
+<p>解决方案如下：</p>
+<p>学生信息表</p>
+<table>
+<thead>
+<tr>
+<th>学生编号（PK）</th>
+<th>学生姓名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1001</td>
+<td>张三</td>
+</tr>
+<tr>
+<td>1002</td>
+<td>李四</td>
+</tr>
+<tr>
+<td>1003</td>
+<td>王五</td>
+</tr>
+</tbody></table>
+<p>教师信息表</p>
+<table>
+<thead>
+<tr>
+<th>教师编号（PK）</th>
+<th>教师姓名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>001</td>
+<td>王老师</td>
+</tr>
+<tr>
+<td>002</td>
+<td>赵老师</td>
+</tr>
+</tbody></table>
+<p>教师和学生的关系表</p>
+<table>
+<thead>
+<tr>
+<th>学生编号(PK) fkà学生表的学生编号</th>
+<th>教师编号(PK) fkà教师表的教师编号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1001</td>
+<td>001</td>
+</tr>
+<tr>
+<td>1002</td>
+<td>002</td>
+</tr>
+<tr>
+<td>1003</td>
+<td>001</td>
+</tr>
+<tr>
+<td>1001</td>
+<td>002</td>
+</tr>
+</tbody></table>
+<p>如果一个表是单一主键，那么它就复合第二范式，部分依赖和主键有关系</p>
+<p><strong>以上是一种典型的“多对多”的设计</strong></p>
+<h2 id="第三范式："><a href="#第三范式：" class="headerlink" title="第三范式："></a>第三范式：</h2><p>建立在第二范式之上，所有非主键字段直接依赖主键，不能产生传递依赖</p>
+<p>提醒：在实际的开发中，以满足客户的需求为主，有的时候回拿冗余换执行速度。</p>
+<table>
+<thead>
+<tr>
+<th>学生编号（PK）</th>
+<th>学生姓名</th>
+<th>班级编号</th>
+<th>班级名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1001</td>
+<td>张三</td>
+<td>01</td>
+<td>一年一班</td>
+</tr>
+<tr>
+<td>1002</td>
+<td>李四</td>
+<td>02</td>
+<td>一年二班</td>
+</tr>
+<tr>
+<td>1003</td>
+<td>王五</td>
+<td>03</td>
+<td>一年三班</td>
+</tr>
+<tr>
+<td>1004</td>
+<td>六</td>
+<td>03</td>
+<td>一年三班</td>
+</tr>
+</tbody></table>
+<p>从上表可以看出，班级名称字段存在冗余，因为班级名称字段没有直接依赖于主键，班级名称字段依赖于班级编号，班级编号依赖于学生编号，那么这就是传递依赖，解决的办法是将冗余字段单独拿出来建立表，如：</p>
+<p>学生信息表</p>
+<table>
+<thead>
+<tr>
+<th>学生编号（PK）</th>
+<th>学生姓名</th>
+<th>班级编号（FK）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1001</td>
+<td>张三</td>
+<td>01</td>
+</tr>
+<tr>
+<td>1002</td>
+<td>李四</td>
+<td>02</td>
+</tr>
+<tr>
+<td>1003</td>
+<td>王五</td>
+<td>03</td>
+</tr>
+<tr>
+<td>1004</td>
+<td>六</td>
+<td>03</td>
+</tr>
+</tbody></table>
+<p>班级信息表</p>
+<table>
+<thead>
+<tr>
+<th>班级编号（PK）</th>
+<th>班级名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>一年一班</td>
+</tr>
+<tr>
+<td>02</td>
+<td>一年二班</td>
+</tr>
+<tr>
+<td>03</td>
+<td>一年三班</td>
+</tr>
+</tbody></table>
+<p><strong>以上设计是一种典型的一对多的设计，一存储在一张表中，多存储在一张表中，在多的那张表中添加外键指向一的一方的主键</strong></p>
+<h2 id="三范式总结"><a href="#三范式总结" class="headerlink" title="三范式总结"></a>三范式总结</h2><p>第一范式：有主键，具有原子性，字段不可分割</p>
+<p>第二范式：完全依赖，没有部分依赖</p>
+<p>第三范式：没有传递依赖</p>
+<p>数据库设计尽量遵循三范式，但是还是根据实际情况进行取舍，有时可能会拿冗余换速度，最终用目的要满足客户需求。</p>
+<p><strong>一对一设计，有两种设计方案：</strong></p>
+<p><strong>第一种设计方案：主键共享</strong></p>
+<p><strong>第二种设计方案：外键唯一</strong></p>
+<h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h1><h2 id="什么是视图"><a href="#什么是视图" class="headerlink" title="什么是视图"></a>什么是视图</h2><p>•     视图是一种根据查询（也就是SELECT表达式）定义的数据库对象，用于获取想要看到和使用的局部数据。</p>
+<p>•     视图有时也被成为“虚拟表”。 </p>
+<p>•     视图可以被用来从常规表（称为“基表”）或其他视图中查询数据。</p>
+<p>•     相对于从基表中直接获取数据，视图有以下好处：</p>
+<p>–     访问数据变得简单</p>
+<p>–     可被用来对不同用户显示不同的表的内容</p>
+<p>用来协助适配表的结构以适应前端现有的应用程序</p>
+<p>视图作用：</p>
+<p>-     提高检索效率</p>
+<p>-     隐藏表的实现细节【面向视图检索】                               </p>
+<p> <img src="/2021/06/05/mysql/image-20210912104154791.png" alt="image-20210912104154791"></p>
+<h2 id="创建视图"><a href="#创建视图" class="headerlink" title="创建视图"></a>创建视图</h2><p>如下示例：查询员工的姓名，部门，工资入职信息等信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select ename,dname,sal,hiredate,e.deptno  from emp e,dept d where e.deptno   =  e.deptno and e.deptno = 10;  </span><br></pre></td></tr></table></figure>
+
+<p>为什么使用视图？因为需求决定以上语句需要在多个地方使用，如果频繁的拷贝以上代码，会给维护带来成本，视图可以解决这个问题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create view v_dept_emp as select ename,dname,sal,hiredate,e.deptno from emp  e,dept d where e.deptno   =  e.deptno and e.deptno = 10;  </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create view v_dept_avg_sal_grade as  select a.deptno, a.avg_sal, b.grade   from (select deptno, avg(sal) avg_sal  from emp group by deptno) a, salgrade b   where a.avg_sal between b.losal and  b.hisal; /*注意mysql不支持子查询创建视图*/ |</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改视图"><a href="#修改视图" class="headerlink" title="修改视图"></a>修改视图</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter view v_dept_emp as select  ename,dname,sal,hiredate,e.deptno from e  mp e,dept d where e.deptno = 20;     </span><br></pre></td></tr></table></figure>
+
+<h2 id="删除视图"><a href="#删除视图" class="headerlink" title="删除视图"></a>删除视图</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop view if exists v_dept_emp;  </span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/08/15/spring5/" rel="prev" title="spring5">
+                spring5 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/18cc395b668d48888eaca3a0cceec50a_th.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/icecfish" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A1%A8%EF%BC%9A-table"><span class="nav-number">2.</span> <span class="nav-text">表： table</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2"><span class="nav-number">3.</span> <span class="nav-text">查询</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5"><span class="nav-number">3.1.</span> <span class="nav-text">简单的查询语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Enull"><span class="nav-number">3.2.</span> <span class="nav-text">关于null</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="nav-number">3.3.</span> <span class="nav-text">连接查询</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%88%A0%E9%99%A4%E8%A1%A8%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%AD%97%E6%AE%B5%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9"><span class="nav-number">4.</span> <span class="nav-text">创建删除表，以及字段的增删改</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%A1%A8"><span class="nav-number">4.1.</span> <span class="nav-text">创建表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#insert%E8%AF%AD%E5%8F%A5%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="nav-number">4.2.</span> <span class="nav-text">insert语句插入数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E8%A1%A8"><span class="nav-number">4.3.</span> <span class="nav-text">删除表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E8%AF%AD%E5%8F%A5%EF%BC%9Aupdate"><span class="nav-number">4.4.</span> <span class="nav-text">修改语句：update</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E8%AF%AD%E5%8F%A5%EF%BC%9A-delete"><span class="nav-number">4.5.</span> <span class="nav-text">删除语句： delete</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E5%88%A0%E9%99%A4%E5%A4%A7%E8%A1%A8%EF%BC%9F"><span class="nav-number">4.6.</span> <span class="nav-text">怎么删除大表？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A8%E7%9A%84%E7%BA%A6%E6%9D%9F"><span class="nav-number">4.7.</span> <span class="nav-text">表的约束</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1"><span class="nav-number">5.</span> <span class="nav-text">事务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E5%85%B7%E6%9C%89%E5%9B%9B%E4%B8%AA%E7%89%B9%E5%BE%81ACID"><span class="nav-number">5.1.</span> <span class="nav-text">事务具有四个特征ACID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%EF%BC%9A"><span class="nav-number">5.2.</span> <span class="nav-text">事务隔离级别：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E4%B8%AA%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="nav-number">5.2.1.</span> <span class="nav-text">四个隔离级别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95"><span class="nav-number">6.</span> <span class="nav-text">索引</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86"><span class="nav-number">6.1.</span> <span class="nav-text">索引原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">6.2.</span> <span class="nav-text">索引的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95"><span class="nav-number">6.2.1.</span> <span class="nav-text">创建索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%B4%A2%E5%BC%95"><span class="nav-number">6.2.2.</span> <span class="nav-text">查看索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95"><span class="nav-number">6.2.3.</span> <span class="nav-text">使用索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%B4%A2%E5%BC%95"><span class="nav-number">6.2.4.</span> <span class="nav-text">删除索引</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%89%E8%8C%83%E5%BC%8F%EF%BC%88%E8%A7%A3%E5%86%B3%E6%95%B0%E6%8D%AE%E5%86%97%E4%BD%99%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">数据库设计三范式（解决数据冗余）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E8%8C%83%E5%BC%8F%EF%BC%9A"><span class="nav-number">7.1.</span> <span class="nav-text">第一范式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E8%8C%83%E5%BC%8F%EF%BC%9A"><span class="nav-number">7.2.</span> <span class="nav-text">第二范式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E8%8C%83%E5%BC%8F%EF%BC%9A"><span class="nav-number">7.3.</span> <span class="nav-text">第三范式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E8%8C%83%E5%BC%8F%E6%80%BB%E7%BB%93"><span class="nav-number">7.4.</span> <span class="nav-text">三范式总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE"><span class="nav-number">8.</span> <span class="nav-text">视图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%A7%86%E5%9B%BE"><span class="nav-number">8.1.</span> <span class="nav-text">什么是视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE"><span class="nav-number">8.2.</span> <span class="nav-text">创建视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E8%A7%86%E5%9B%BE"><span class="nav-number">8.3.</span> <span class="nav-text">修改视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E8%A7%86%E5%9B%BE"><span class="nav-number">8.4.</span> <span class="nav-text">删除视图</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zcb</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+</body>
+</html>

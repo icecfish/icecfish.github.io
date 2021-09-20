@@ -11,7 +11,27 @@
 <h2 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h2><p>不遵循SQL标准</p>
 <p>不支持ACID</p>
 <p>远超于SQL的性能</p>
-<h1 id="redis启动"><a href="#redis启动" class="headerlink" title="redis启动"></a>redis启动</h1>]]></content>
+<h1 id="redis启动"><a href="#redis启动" class="headerlink" title="redis启动"></a>redis启动</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/usr/local/bin/redis-server /etc/redis.conf      后台启动</span><br><span class="line">/usr/local/bin/redis-cli                         进行连接</span><br><span class="line">ping                                             测试连接</span><br><span class="line">shutdown                                         关闭</span><br><span class="line">exit -&gt; kill -9 5780                             关闭</span><br></pre></td></tr></table></figure>
+
+<h1 id="redis相关知识"><a href="#redis相关知识" class="headerlink" title="redis相关知识"></a>redis相关知识</h1><p>默认16个数据库。类似数组下标，从0开始。</p>
+<p>切换数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select n        切换到n号数据库</span><br></pre></td></tr></table></figure>
+
+<p>单线程+多路io复用的理解</p>
+<p><img src="/2021/09/17/redis/image-20210920151529835.png" alt="image-20210920151529835"></p>
+<h2 id="Redis键（Key）"><a href="#Redis键（Key）" class="headerlink" title="Redis键（Key）"></a>Redis键（Key）</h2><h3 id="key命令"><a href="#key命令" class="headerlink" title="key命令"></a>key命令</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">keys *            查看当前库所有Key</span><br><span class="line">exists key值      查看该键是否存在</span><br><span class="line">type key值        查看改键的类型</span><br><span class="line">del  key值        删除指定的key数据</span><br><span class="line">unlink  key值     根据value选择非阻塞删除（仅将keys从keyspace元数据中删除，真正的删除会在后续异步操作）</span><br><span class="line">expire key值 n    n秒钟后，key过期</span><br><span class="line">ttl key值         正数表示还有多久过期，-1表示永不过期，-2表示已经过期</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据库命令"><a href="#数据库命令" class="headerlink" title="数据库命令"></a>数据库命令</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select       切换数据库</span><br><span class="line">dbsize       查看当前数据库的key数量</span><br><span class="line">flushdb      清空当前库</span><br><span class="line">flushall     通杀全部库</span><br></pre></td></tr></table></figure>
+
+<h2 id="Redis字符串（String）"><a href="#Redis字符串（String）" class="headerlink" title="Redis字符串（String）"></a>Redis字符串（String）</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>String类型是二进制安全的，意味着Redis的stirng可以包含任何数据，比如jpg图片或者序列化的对象。</p>
+<p>String类型是Redis中最基本的数据类型，一个Redis中字符串value最多可以存放512M</p>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">set key value          添加键值对</span><br><span class="line">get key                获取值</span><br><span class="line">append key value       追加值到原先值后面，并返回长度</span><br><span class="line">strlen key             获得值的长度</span><br><span class="line">setnx key value        只有在key不存在时，设置key的值。返回0设置失败，返回1设置成功</span><br><span class="line">incr/decr key          只在value是数字时，value值加1/减1</span><br><span class="line">incrby/decrby key n    只在value是数字时，value值加n/减n</span><br></pre></td></tr></table></figure>
+
+<h3 id="补充：原子操作"><a href="#补充：原子操作" class="headerlink" title="补充：原子操作"></a>补充：原子操作</h3><p>incr/decr/incrby/decrby是原子性操作</p>
+<p>原子操作：不会被线程调度机制打断的操作。这种操作一旦开始就一直运行到结束，中间不会有任何的 context swtich（切换到另一个线程）</p>
+<p>在单线程中，能够在单条指令中完成的操作都认为是原子操作，因为中断了之恩那个发生于指令之间。</p>
+<p>在多线程中，不能被其他进程打断的操作就叫做原子操作。</p>
+]]></content>
       <tags>
         <tag>java</tag>
         <tag>redis</tag>
@@ -473,7 +493,7 @@
 <tbody><tr>
 <td>1001</td>
 <td>张三</td>
-<td><a href="mailto:&#122;&#x73;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#x6f;&#x6d;">&#122;&#x73;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#x6f;&#x6d;</a>,1359999999</td>
+<td><a href="mailto:&#x7a;&#115;&#64;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#109;">&#x7a;&#115;&#64;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#109;</a>,1359999999</td>
 </tr>
 <tr>
 <td>1002</td>
@@ -483,7 +503,7 @@
 <tr>
 <td>1001</td>
 <td>王五</td>
-<td><a href="mailto:&#119;&#x77;&#x40;&#49;&#54;&#51;&#x2e;&#110;&#x65;&#116;">&#119;&#x77;&#x40;&#49;&#54;&#51;&#x2e;&#110;&#x65;&#116;</a>,13488888888</td>
+<td><a href="mailto:&#119;&#x77;&#64;&#49;&#54;&#51;&#46;&#110;&#x65;&#x74;">&#119;&#x77;&#64;&#49;&#54;&#51;&#46;&#110;&#x65;&#x74;</a>,13488888888</td>
 </tr>
 </tbody></table>
 <p>存在问题：</p>
@@ -501,7 +521,7 @@
 <tbody><tr>
 <td>1001</td>
 <td>张三</td>
-<td><a href="mailto:&#122;&#115;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#111;&#x6d;">&#122;&#115;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#111;&#x6d;</a></td>
+<td><a href="mailto:&#x7a;&#115;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#x6f;&#x6d;">&#x7a;&#115;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#x6f;&#x6d;</a></td>
 <td>1359999999</td>
 </tr>
 <tr>

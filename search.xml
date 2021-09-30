@@ -1,270 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>hexo搭建个人博客</title>
-    <url>/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>用一下他人的hexo搭建过程方便需要时查阅，已表明出处。</p>
+    <title>java基础与计算机相关</title>
+    <url>/2021/06/06/java%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>javase相关知识及面试相关问题</p>
 <span id="more"></span>
 
-<h3 id="搭建环境准备"><a href="#搭建环境准备" class="headerlink" title="搭建环境准备"></a>搭建环境准备</h3><p>大概可以分为以下三步</p>
-<ul>
-<li>Node.js 的安装和准备</li>
-<li>git的安装和准备</li>
-<li>gitHub账户的配置</li>
-</ul>
-<h4 id="配置Node-js环境"><a href="#配置Node-js环境" class="headerlink" title="配置Node.js环境"></a>配置Node.js环境</h4><ol>
-<li><p>下载Node.js安装文件：  <a href="http://nodejs.cn/">nodejs中国官网</a>  <a href="https://nodejs.org/en/">nodejs官网</a>  根据自己的Windows版本选择相应的安装文件。 如图所示：  </p>
-<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/1" alt="img"></p>
-<p>image</p>
-<p>保持默认设置即可，一路Next，安装很快就结束了。 然后我们检查一下是不是要求的组件都安装好了，同时按下Win和R，打开运行窗口：  Windows的运行界面  </p>
-<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/2" alt="img"></p>
-<p>image</p>
-<p>在新打开的窗口中输入cmd，敲击回车，打开命令行界面。（下文将直接用打开命令行来表示以上操作，记住哦~） 在打开的命令行界面中，输入</p>
-</li>
-</ol>
-<p>node -v<br> npm -v</p>
-<p>如果结果如下图所示，则说明安装正确，可以进行下一步了，如果不正确，则需要回头检查自己的安装过程。  [图片上传失败…(image-aae4c5-1546580871476)]</p>
-<h4 id="配置Git环境"><a href="#配置Git环境" class="headerlink" title="配置Git环境"></a>配置Git环境</h4><p>下载Git安装文件：  <a href="https://git-scm.com/downloads">GIt官网下载地址：</a>  <a href="https://github.com/git-for-windows/git/releases/download/v2.16.2.windows.1/Git-2.16.2-64-bit.exe">Git-2.16.2-64-bit.exe</a>  然后就进入了Git的安装界面，如图：  </p>
-<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/3" alt="img"></p>
-<p>image</p>
-<p>和Node.js一样，大部分设置都只需要保持默认.  一样的，我们来检查一下Git是不是安装正确了，打开命令行，输入：</p>
-<p>git –version</p>
-<p>如果结果如下图所示，则说明安装正确，可以进行下一步了，如果不正确，则需要回头检查自己的安装过程。  [图片上传失败…(image-8ad417-1546580871476)]</p>
-<h4 id="coding账户的注册和配置"><a href="#coding账户的注册和配置" class="headerlink" title="coding账户的注册和配置"></a>coding账户的注册和配置</h4><p>国内的网站，绝大部分都是中文的，注册什么的就不说了,进入<em>Coding</em> 滚键盘就是了= =</p>
-<h5 id="创建项目-Coding-Pages"><a href="#创建项目-Coding-Pages" class="headerlink" title="创建项目(Coding Pages)"></a>创建项目(Coding Pages)</h5><p>注册之后进入主页，点击项目，点击 *+*，项目名为你的用户名  查看Pages 服务是否开启：点击项目 -&gt; 代码 -&gt; Pages 服务，若没有开启则点开启</p>
-<h5 id="配置SSH与Git"><a href="#配置SSH与Git" class="headerlink" title="配置SSH与Git"></a>配置SSH与Git</h5><p>那么我们有了免费的服务器之后，就要绑定个人电脑与它们联系，那就是<strong>SSH</strong>与<strong>Git</strong>  绑定之后我们每次部署项目就不用输入帐号和密码</p>
-<h5 id="生成SSH-Key"><a href="#生成SSH-Key" class="headerlink" title="生成SSH Key"></a>生成SSH Key</h5><p>ssh-keygen -t rsa -C <a href="mailto:your_email@youremail.com">your_email@youremail.com</a></p>
-<p>后面的 <code>your_email@youremail.com</code> 改为你的邮箱，之后会要求确认路径和输入密码，我们这使用默认的一路回车就行。成功的话会在~/下生成 <code>.ssh</code> 文件夹，进去，打开 <code>id_rsa.pub</code>，复制里面的key，粗暴点就是 Ctrl+a 然后 Ctrl+c</p>
-<h5 id="添加SSH-Key"><a href="#添加SSH-Key" class="headerlink" title="添加SSH Key"></a>添加SSH Key</h5><p>Coding，登录进入主页，点击 <code>账户</code> —&gt; <code>SSH公钥</code> —&gt; 输入key再点击 <code>添加</code></p>
-<h5 id="验证成功与否"><a href="#验证成功与否" class="headerlink" title="验证成功与否"></a>验证成功与否</h5><p>验证coding</p>
-<p>ssh -T <a href="mailto:git@git.coding.net">git@git.coding.net</a><br> 如果是第一次的会提示是否continue，输入<strong>yes</strong>就会看到：You’ve successfully authenticated, but coding does not provide shell access 。这就表示已成功连上coding!  接下来我们要做的就是把本地仓库传到coding上去，在此之前还需要设置username和email，因为coding每次commit都会记录他们</p>
-<p>git config –global user.name your name<br> git config –global <a href="http://user.email/">user.email</a> <a href="mailto:your_email@youremail.com">your_email@youremail.com</a></p>
-<h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h4><p>在自己认为合适的地方创建一个文件夹，这里我以E：/hexo 为例子讲解，首先在E盘目录下创建Hexo文件夹，并在命令行的窗口进入到该目录  </p>
-<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/4" alt="img"></p>
-<p>image</p>
-<p>在命令行中输入：</p>
-<p>npm install hexo-cli -g</p>
-<p>然后你将会看到:  </p>
-<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/5" alt="img"></p>
-<p>image</p>
-<p>可能你会看到一个WARN，但是不用担心，这不会影响你的正常使用。  下面我们来看一看Hexo是不是已经安装好了。 在命令行中输入：<br> hexo -v</p>
-<p>如果你看到了如图文字，则说明已经安装成功了。  </p>
-<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/6" alt="img"></p>
-<p>image</p>
-<h3 id="hexo的相关配置"><a href="#hexo的相关配置" class="headerlink" title="hexo的相关配置"></a>hexo的相关配置</h3><p><strong>初始化Hexo</strong>  我们使用<code>cd</code>命令换到你喜欢的地址，接着上面的操作，输入：</p>
-<p>hexo init</p>
-<p>然后输入：</p>
-<p>npm install</p>
-<p>之后npm将会自动安装你需要的组件，只需要等待npm操作即可。  <strong>首次体验Hexo</strong>  继续操作，同样是在命令行中，输入：</p>
-<p>hexo g</p>
-<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/7" alt="img"></p>
-<p>image</p>
-<p>然后输入：</p>
-<p>hexo s</p>
-<p>然后会提示：  INFO Hexo is running at <a href="https://0.0.0.0:4000/">https://0.0.0.0:4000/</a>. Press Ctrl+C to stop.  在浏览器中打开<a href="https://localhost:4000/%EF%BC%8C%E4%BD%A0%E5%B0%86%E4%BC%9A%E7%9C%8B%E5%88%B0%EF%BC%9A">https://localhost:4000/，你将会看到：</a>  </p>
-<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/8" alt="img"></p>
-<p>image</p>
-<p>目前为止，Hexo在本地的配置已经全都结束了。  <strong>坑</strong> 执行hexo server提示找不到该指令  解决办法：在Hexo 3.0 后server被单独出来了，需要安装server，安装的命令如下：</p>
-<p>sudo npm install hexo-server<br> 或者<br> npm install hexo -server –save</p>
-<h3 id="怎样将Hexo与coding-page-联系起来"><a href="#怎样将Hexo与coding-page-联系起来" class="headerlink" title="怎样将Hexo与coding page 联系起来"></a>怎样将Hexo与coding page 联系起来</h3><p><strong>配置Deployment</strong>  在此之前，先安装<strong>Git部署插件</strong></p>
-<p>npm install hexo-deployer-git –save</p>
-<p>在你博客文件夹下<code>_config.yml</code>文件中，找到<code>Deploy</code>，然后按照如下修改：</p>
-<p>deploy:<br> type: git<br> repo: <a href="mailto:git@coding.net">git@coding.net</a>:yourname/<a href="http://yourname.coding.me.git/">yourname.coding.me.git</a><br> branch: master</p>
-<p>比如我的仓库的地址是<a href="mailto:git@coding.net">git@coding.net</a>:valex/valext.coding.me.git,master，所以配置如下</p>
-<p>Deployment<br> Docs: <a href="https://hexo.io/docs/deployment.html">https://hexo.io/docs/deployment.html</a><br> deploy:<br> type: git<br> repo: <a href="mailto:git@coding.net">git@coding.net</a>:valex/<a href="http://valext.coding.me.git,master/">valext.coding.me.git,master</a></p>
-<h3 id="写博客、发布文章"><a href="#写博客、发布文章" class="headerlink" title="写博客、发布文章"></a>写博客、发布文章</h3><p>新建一篇博客，执行下面的命令：</p>
-<p>hexo new post “article title”</p>
-<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/9" alt="img"></p>
-<p>image</p>
-<p>这时候在你的电脑的目录下<code>:\hexo\source\ _posts</code>将会看到<code>article title.md</code>文件  用MarDown编辑器打开就可以编辑文章了。文章编辑好之后，运行生成、部署命令：</p>
-<p>hexo g   // 生成<br> hexo d   // 部署</p>
-<p>当然你也可以执行下面的命令，相当于上面两条命令的效果</p>
-<p>hexo g -d #在部署前先生成</p>
-<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/10" alt="img"></p>
-<p>image</p>
-<p>部署成功后访问 你的地址，<a href="https://yourname.coding.me/">httpss://yourName.coding.me</a>,将可以看到生成的文章。  <strong>踩坑提醒</strong></p>
-<ul>
-<li>1）注意需要提前安装一个扩展：</li>
-</ul>
-<p>npm install hexo-deployer-git –save</p>
-<p><strong>如果没有执行者行命令，将会提醒</strong></p>
-<blockquote>
-<p>deloyer not found:git</p>
-</blockquote>
-<ul>
-<li><p>2）如果出现下面这样的错误，</p>
-<blockquote>
-<p>Permission denied (publickey).  fatal: Could not read from remote repository.  Please make sure you have the correct access rights  and the repository exists.</p>
-</blockquote>
-</li>
-</ul>
-<p>则是因为没有设置好public key所致。</p>
-<h3 id="主题推荐"><a href="#主题推荐" class="headerlink" title="主题推荐"></a>主题推荐</h3><p>每个不同的主题会需要不同的配置，主题配置文件在主题目录下的_config.yml。有几个比较好的主题推荐给大家。Yilia 是为 hexo 2.4+制作的主题。 崇尚简约优雅，以及极致的性能。 </p>
-<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/11" alt="img"></p>
-<p>image</p>
-<p><a href="https://litten.github.io/">Yilia地址</a>  <strong>NexT</strong> 我的网站就是采用这个主题，简洁美观。 目前Github上Star最高的Hexo主题，支持几种不同的风格。 作者提供了非常完善的配置说明。 </p>
-<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/12" alt="img"></p>
-<p>image</p>
-<p><a href="https://github.com/iissnan/hexo-theme-next">next地址</a>  Pacman是一款为<a href="https://zespia.tw/hexo/">Hexo</a>打造的一款扁平化，有着响应式设计的主题。  [图片上传失败…(image-5179ff-1546580871471)]</p>
-<p><a href="https://github.com/A-limon/pacman">pacman地址</a></p>
-<h3 id="主题使用教程"><a href="#主题使用教程" class="headerlink" title="主题使用教程"></a>主题使用教程</h3><p><a href="https://hexo.io/zh-cn/">Hexo</a> 是高效的静态站点生成框架，她基于 <a href="https://nodejs.org/">Node.js</a>。 通过 Hexo 你可以轻松地使用 Markdown 编写文章，除了 Markdown 本身的语法之外，还可以使用 Hexo 提供的 <a href="https://hexo.io/zh-cn/docs/tag-plugins.html">标签插件</a> 来快速的插入特定形式的内容。在这篇文章中，假定你已经成功安装了 Hexo，并使用 Hexo 提供的命令创建了一个站点。  你可以访问 <a href="https://hexo.io/zh-cn/docs/">Hexo 的文档</a> 了解如何安装 Hexo  在 Hexo 中有两份主要的配置文件，其名称都是 <code>_config.yml</code>。 其中，一份位于站点根目录下，主要包含 Hexo 本身的配置；另一份位于主题目录下，这份配置由主题作者提供，主要用于配置主题相关的选项。  为了描述方便，在以下说明中，将前者称为<strong>站点配置</strong>文件， 后者称为<strong>主题配置</strong>文件。</p>
-<h4 id="安装-NexT"><a href="#安装-NexT" class="headerlink" title="安装 NexT"></a>安装 NexT</h4><p>Hexo 安装主题的方式非常简单，只需要将主题文件拷贝至站点目录的 <code>themes</code> 目录下， 然后修改下配置文件即可。具体到 NexT 来说，安装步骤如下。</p>
-<h4 id="下载主题"><a href="#下载主题" class="headerlink" title="下载主题"></a>下载主题</h4><p>如果你熟悉 <a href="https://git-scm.com/">Git</a>， 建议你使用 克隆最新版本 的方式，之后的更新可以通过 <code>git pull</code> 来快速更新， 而不用再次下载压缩包替换。</p>
-<ul>
-<li><a href="https://theme-next.iissnan.com/getting-started.html#clone">克隆最新版本</a></li>
-<li><a href="https://theme-next.iissnan.com/getting-started.html#stable">下载稳定版本</a>  在终端窗口下，定位到 Hexo 站点目录下。使用 <code>Git</code> checkout 代码：</li>
-</ul>
-<p><img src="https://math.jianshu.com/math?formula=cd%20your-hexo-site" alt="cd your-hexo-site"> git clone <a href="https://github.com/iissnan/hexo-theme-next">https://github.com/iissnan/hexo-theme-next</a> themes/next</p>
-<h4 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h4><p>与所有 Hexo 主题启用的模式一样。 当 克隆/下载 完成后，打开 站点配置文件， 找到 <code>theme</code> 字段，并将其值更改为 <code>next</code>。  启用 NexT 主题</p>
-<p>theme: next</p>
-<p>到此，NexT 主题安装完成。下一步我们将验证主题是否正确启用。在切换主题之后、验证之前， 我们最好使用 <code>hexo clean</code> 来清除 Hexo 的缓存。  <strong>注意</strong> ：这里以后的配置都需要在前面加上空格</p>
-<h4 id="验证主题"><a href="#验证主题" class="headerlink" title="验证主题"></a>验证主题</h4><p>首先启动 Hexo 本地站点，并开启调试模式（即加上 <code>--debug</code>），整个命令是 <code>hexo s --debug</code>。 在服务启动的过程，注意观察命令行输出是否有任何异常信息，如果你碰到问题，这些信息将帮助他人更好的定位错误。 当命令行输出中提示出：</p>
-<p>INFO  Hexo is running at <a href="https://0.0.0.0:4000/">https://0.0.0.0:4000/</a>. Press Ctrl+C to stop.</p>
-<p>此时即可使用浏览器访问 <code>https://localhost:4000</code>，检查站点是否正确运行。  当你看到站点的外观与下图所示类似时即说明你已成功安装 NexT 主题。这是 NexT 默认的 Scheme —— Muse  </p>
-<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/13" alt="img"></p>
-<p>image</p>
-<p>现在，你已经成功安装并启用了 NexT 主题。下一步我们将要更改一些主题的设定，包括个性化以及集成第三方服务。</p>
-<h4 id="主题设定"><a href="#主题设定" class="headerlink" title="主题设定"></a>主题设定</h4><h5 id="选择-Scheme"><a href="#选择-Scheme" class="headerlink" title="选择 Scheme"></a>选择 Scheme</h5><p>Scheme 是 NexT 提供的一种特性，借助于 Scheme，NexT 为你提供多种不同的外观。同时，几乎所有的配置都可以 在 Scheme 之间共用。目前 NexT 支持三种 Scheme，他们是：</p>
-<ul>
-<li>Muse - 默认 Scheme，这是 NexT 最初的版本，黑白主调，大量留白</li>
-<li>Mist - Muse 的紧凑版本，整洁有序的单栏外观</li>
-<li>Pisces - 双栏 Scheme，小家碧玉似的清新  Scheme 的切换通过更改 主题配置文件，搜索 scheme 关键字。 你会看到有三行 scheme 的配置，将你需用启用的 scheme 前面注释 <code>#</code> 去除即可。  选择 Pisces Scheme</li>
-</ul>
-<h1 id="scheme-Muse"><a href="#scheme-Muse" class="headerlink" title="scheme: Muse"></a>scheme: Muse</h1><h1 id="scheme-Mist"><a href="#scheme-Mist" class="headerlink" title="scheme: Mist"></a>scheme: Mist</h1><p>scheme: Pisces</p>
-<h5 id="设置-语言"><a href="#设置-语言" class="headerlink" title="设置 语言"></a>设置 语言</h5><p>编辑 站点配置文件， 将 <code>language</code> 设置成你所需要的语言。建议明确设置你所需要的语言，例如选用简体中文，配置如下：</p>
-<p>language: zh-Hans</p>
-<p>目前 NexT 支持的语言如以下表格所示：</p>
-<table>
-<thead>
-<tr>
-<th>语言</th>
-<th>代码</th>
-<th>设定示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>English</td>
-<td><code>en</code></td>
-<td><code>language: en</code></td>
-</tr>
-<tr>
-<td>简体中文</td>
-<td><code>zh-Hans</code></td>
-<td><code>language: zh-Hans</code></td>
-</tr>
-<tr>
-<td>Français</td>
-<td><code>fr-FR</code></td>
-<td><code>language: fr-FR</code></td>
-</tr>
-<tr>
-<td>Português</td>
-<td><code>pt</code></td>
-<td><code>language: pt</code> or <code>language: pt-BR</code></td>
-</tr>
-<tr>
-<td>繁體中文</td>
-<td><code>zh-hk</code> 或者 <code>zh-tw</code></td>
-<td><code>language: zh-hk</code></td>
-</tr>
-<tr>
-<td>Русский язык</td>
-<td><code>ru</code></td>
-<td><code>language: ru</code></td>
-</tr>
-<tr>
-<td>Deutsch</td>
-<td><code>de</code></td>
-<td><code>language: de</code></td>
-</tr>
-<tr>
-<td>日本語</td>
-<td><code>ja</code></td>
-<td><code>language: ja</code></td>
-</tr>
-<tr>
-<td>Indonesian</td>
-<td><code>id</code></td>
-<td><code>language: id</code></td>
-</tr>
-<tr>
-<td>Korean</td>
-<td><code>ko</code></td>
-<td><code>language: ko</code></td>
-</tr>
-</tbody></table>
-<h5 id="设置-菜单"><a href="#设置-菜单" class="headerlink" title="设置 菜单"></a>设置 菜单</h5><p><strong>菜单配置</strong> 包括三个部分，第一是菜单项（名称和链接），第二是菜单项的显示文本，第三是菜单项对应的图标。 NexT 使用的是 <a href="https://fontawesome.io/">Font Awesome</a> 提供的图标， Font Awesome 提供了 600+ 的图标，可以满足绝大的多数的场景，同时无须担心在 Retina 屏幕下 图标模糊的问题。  编辑 <strong>主题配置</strong> 文件，修改以下内容：</p>
-<ol>
-<li>设定菜单内容，对应的字段是 <code>menu</code>。 菜单内容的设置格式是：<code>item name: link</code>。其中 <code>item name</code>是一个名称，这个名称并不直接显示在页面上，她将用于匹配图标以及翻译。  菜单示例配置</li>
-</ol>
-<p>menu:<br> home: /<br> archives: /archives<br> #about: /about<br> #categories: /categories<br> tags: /tags<br> #commonweal: /404.html</p>
-<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">若你的站点运行在子目录中，请将链接前缀的 <span class="string">`/`</span> 去掉</span><br><span class="line"></span><br><span class="line">NexT 默认的菜单项有（标注 的项表示需要手动创建这个页面）：</span><br><span class="line"></span><br><span class="line"><span class="params">| 键值 |</span> 设定值 <span class="params">| 显示文本（简体中文） |</span></span><br><span class="line"><span class="params">| --- |</span> --- <span class="params">| --- |</span></span><br><span class="line"><span class="params">| home |</span> <span class="string">`home: /`</span> <span class="params">| 主页 |</span></span><br><span class="line"><span class="params">| archives |</span> <span class="string">`archives: /archives`</span> <span class="params">| 归档页 |</span></span><br><span class="line"><span class="params">| categories |</span> <span class="string">`categories: /categories`</span> <span class="params">| 分类页 |</span></span><br><span class="line"><span class="params">| tags |</span> <span class="string">`tags: /tags`</span> <span class="params">| 标签页 |</span></span><br><span class="line"><span class="params">| about |</span> <span class="string">`about: /about`</span> <span class="params">| 关于页面 |</span></span><br><span class="line"><span class="params">| commonweal |</span> <span class="string">`commonweal: /404.html`</span> <span class="params">| 公益 404 |</span></span><br></pre></td></tr></table></figure>
-
-<ol>
-<li><p>设置菜单项的显示文本。在第一步中设置的菜单的名称并不直接用于界面上的展示。Hexo 在生成的时候将使用 这个名称查找对应的语言翻译，并提取显示文本。这些翻译文本放置在 NexT 主题目录下的 <code>languages/&#123;language&#125;.yml</code>（<code>&#123;language&#125;</code> 为你所使用的语言）。</p>
-<p>以简体中文为例，若你需要添加一个菜单项，比如 <code>something</code>。那么就需要修改简体中文对应的翻译文件<code>languages/zh-Hans.yml</code>，在 <code>menu</code> 字段下添加一项：</p>
-<pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang contenteditable="true" cid="n206" mdtype="fences" style="box-sizing: border-box; overflow: visible; font-family: var(--monospace); font-size: 0.9em; display: block; break-inside: avoid; text-align: left; white-space: normal; background-image: inherit; background-position: inherit; background-size: inherit; background-repeat: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: rgb(248, 248, 248); position: relative !important; border: 1px solid rgb(231, 234, 237); border-radius: 3px; padding: 8px 1em 6px; margin-bottom: 15px; margin-top: 15px; width: inherit;">menu: home: 首页 archives: 归档 categories: 分类 tags: 标签 about: 关于 search: 搜索 commonweal: 公益404 something: 有料</pre></li>
-<li><p>设定菜单项的图标，对应的字段是 <code>menu_icons</code>。 此设定格式是 <code>item name: icon name</code>，其中 <code>item name</code> 与上一步所配置的菜单名字对应，<code>icon name</code> 是 Font Awesome 图标的 名字。而 <code>enable</code> 可用于控制是否显示图标，你可以设置成 <code>false</code> 来去掉图标。</p>
-<p>菜单图标配置示例</p>
-</li>
-</ol>
-<p>menu_icons:<br> enable: true<br> # Icon Mapping.<br> home: home<br> about: user<br> categories: th<br> tags: tags<br> archives: archive<br> commonweal: heartbeat</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">在菜单图标开启的情况下，如果菜单项与菜单未匹配（没有设置或者无效的 Font Awesome 图标名字） 的情况下，NexT 将会使用 作为图标。</span><br><span class="line"></span><br><span class="line">请注意键值（如 <span class="string">`home`</span>）的大小写要严格匹配</span><br></pre></td></tr></table></figure>
-
-<h5 id="设置-侧栏"><a href="#设置-侧栏" class="headerlink" title="设置 侧栏"></a>设置 侧栏</h5><p>默认情况下，侧栏仅在文章页面（拥有目录列表）时才显示，并放置于右侧位置。 可以通过修改 <strong>主题配置</strong> 文件 中的 <code>sidebar</code> 字段来控制侧栏的行为。侧栏的设置包括两个部分，其一是侧栏的位置， 其二是侧栏显示的时机。</p>
-<ol>
-<li><p>设置侧栏的位置，修改 <code>sidebar.position</code> 的值，支持的选项有：</p>
-<ul>
-<li>left - 靠左放置</li>
-<li>right - 靠右放置</li>
-</ul>
-<p>目前仅 Pisces Scheme 支持 <code>position</code> 配置。影响版本5.0.0及更低版本。</p>
-</li>
-</ol>
-<p>sidebar:<br> position: left</p>
-<ol>
-<li>设置侧栏显示的时机，修改 <code>sidebar.display</code> 的值，支持的选项有：<ul>
-<li><code>post</code> - 默认行为，在文章页面（拥有目录列表）时显示</li>
-<li><code>always</code> - 在所有页面中都显示</li>
-<li><code>hide</code> - 在所有页面中都隐藏（可以手动展开）</li>
-<li><code>remove</code> - 完全移除</li>
-</ul>
-</li>
-</ol>
-<p>sidebar:<br> display: post</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">已知侧栏在 `use motion: false` 的情况下不会展示。 影响版本<span class="number">5.0</span>.<span class="number">0</span>及更低版本。</span><br></pre></td></tr></table></figure>
-
-<h5 id="设置-头像"><a href="#设置-头像" class="headerlink" title="设置 头像"></a>设置 头像</h5><p>编辑 <strong>主题配置</strong> 文件， 修改字段 <code>avatar</code>， 值设置成头像的链接地址。其中，头像的链接地址可以是：</p>
-<table>
-<thead>
-<tr>
-<th>地址</th>
-<th>值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>完整的互联网 URI</td>
-<td><code>https://example.com/avatar.png</code></td>
-</tr>
-<tr>
-<td>站点内的地址</td>
-<td>将头像放置主题目录下的 <code>source/uploads/</code> （新建 uploads 目录若不存在） 配置为：<code>avatar: /uploads/avatar.png</code>或者 放置在 <code>source/images/</code> 目录下 配置为：<code>avatar: /images/avatar.png</code></td>
-</tr>
-</tbody></table>
-<p>头像设置示例</p>
-<p>avatar: <a href="https://example.com/avatar.png">https://example.com/avatar.png</a></p>
-<h5 id="设置-作者昵称"><a href="#设置-作者昵称" class="headerlink" title="设置 作者昵称"></a>设置 作者昵称</h5><p>编辑 <strong>站点配置</strong> 文件， 设置 <code>author</code> 为你的昵称。</p>
-<h5 id="站点描述"><a href="#站点描述" class="headerlink" title="站点描述"></a>站点描述</h5><p>编辑 <strong>站点配置文件</strong>， 设置 <code>description</code> 字段为你的站点描述。站点描述可以是你喜欢的一句签名:)</p>
-<p>其他主题的使用参见其他主题github中的readme部分。</p>
-<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p><a href="https://yangbingdong.com/2017/build-blog-hexo-base/#GitHub">https://yangbingdong.com/2017/build-blog-hexo-base/#GitHub</a>  <a href="https://blog.csdn.net/i_am_tomato/article/details/70177019">https://blog.csdn.net/i_am_tomato/article/details/70177019</a>  <a href="https://blog.csdn.net/summer_zmc/article/details/55049906">https://blog.csdn.net/summer_zmc/article/details/55049906</a>  <a href="https://coding.net/help/doc/project/creating-project.html">https://coding.net/help/doc/project/creating-project.html</a>  <a href="https://www.lovebxm.com/2017/05/30/buildBlog/">https://www.lovebxm.com/2017/05/30/buildBlog/</a></p>
-<p><a href="https://theme-next.iissnan.com/getting-started.html">https://theme-next.iissnan.com/getting-started.html</a></p>
-<p>作者：valex<br>链接：<a href="https://www.jianshu.com/p/e0fbc9eed3b2">https://www.jianshu.com/p/e0fbc9eed3b2</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><h2 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h2><p>构造方法</p>
+<h2 id="接口与抽象的区别"><a href="#接口与抽象的区别" class="headerlink" title="接口与抽象的区别"></a>接口与抽象的区别</h2><p>1.jdk1.8之前抽象类可以存在普通成员变量，而接口中存在public abstract方法。</p>
+<p>jdk1.8之后接口可以有静态方法和默认方法。</p>
+<p>2抽象类中的成员变量可以是各种类型的，而接口的成员变量只能是public static final类型的，即常量。</p>
+<p>3抽象类只能继承一个，接口继承多个接口，一个类可以实现多个接口。</p>
+<p>接口是对类行为进行约束。是对行为的抽象，like a的关系。</p>
+<p>抽象类的目的是代码复用。是对类本质的抽象，是is a的关系。</p>
+<h2 id="线程创建"><a href="#线程创建" class="headerlink" title="线程创建"></a>线程创建</h2><h3 id="第一种方式：Thread方式"><a href="#第一种方式：Thread方式" class="headerlink" title="第一种方式：Thread方式"></a>第一种方式：Thread方式</h3><p>1一个子类继承Thread类</p>
+<p>2重写run方法</p>
+<p>3创建该类对象</p>
+<p>4调用start（）</p>
+<h3 id="第二种方式：Runnable方式"><a href="#第二种方式：Runnable方式" class="headerlink" title="第二种方式：Runnable方式"></a>第二种方式：Runnable方式</h3><p>1一个子类实现Runnable 接口</p>
+<p>2重写run方法</p>
+<p>3创建该类对象</p>
+<p>4将该对象作为形参传给new Thread()</p>
+<p>5调用start（）</p>
+<h3 id="两种方式对比"><a href="#两种方式对比" class="headerlink" title="两种方式对比"></a>两种方式对比</h3><p>优先选择实现Runnable接口的方式</p>
+<p>1实现的方式没有类的单继承性的限制</p>
+<p>2实现的方式更适合来处理共享数据</p>
+<h3 id="第三种方式-Callable方式"><a href="#第三种方式-Callable方式" class="headerlink" title="第三种方式:Callable方式"></a>第三种方式:Callable方式</h3><p>1实现Callable</p>
+<p>2重写call方法 </p>
+<p>3创建该对象</p>
+<p>4传参给new  FutureTask()</p>
+<p>5将该类传参给Thread()</p>
+<p>6调用start()</p>
+<p>7可以调用FutureTask的get()方法来获取返回值</p>
+<h3 id="比runnable优势："><a href="#比runnable优势：" class="headerlink" title="比runnable优势："></a>比runnable优势：</h3><p>可以获取返回值，可以抛异常，可以使用泛型</p>
+<h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><h2 id="线程的生命周期"><a href="#线程的生命周期" class="headerlink" title="线程的生命周期"></a>线程的生命周期</h2><p><img src="/2021/06/06/java%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3/image-20210925113641990.png" alt="image-20210925113641990"></p>
+<h2 id="两种锁"><a href="#两种锁" class="headerlink" title="两种锁"></a>两种锁</h2><h3 id="同步代码块"><a href="#同步代码块" class="headerlink" title="同步代码块"></a>同步代码块</h3><p>锁必须一致</p>
+<p>synchronized执行完会自动释放锁</p>
+<p>lock必须手动释放</p>
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><p>arraylist</p>
+<p>1.7底层初始10长度数组，每次扩容1.5倍</p>
+<p>1.8初始化不创建数组，加入元素后创建数组</p>
+<h2 id="三次握手四次挥手"><a href="#三次握手四次挥手" class="headerlink" title="三次握手四次挥手"></a>三次握手四次挥手</h2><h3 id="三次握手："><a href="#三次握手：" class="headerlink" title="三次握手："></a>三次握手：</h3><p>1客户端向服务端发送一个SYN</p>
+<p>2服务端收到SYN后，给客户端发送一个SYN_ACK</p>
+<p>3客户端收到SYN_ACK后，再给服务器发送一个ACK  </p>
+<h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h1><h2 id="ioc原理"><a href="#ioc原理" class="headerlink" title="ioc原理"></a>ioc原理</h2><h3 id="ClassPathXmlApplicationContext-“ioc-xml”-的创建过程"><a href="#ClassPathXmlApplicationContext-“ioc-xml”-的创建过程" class="headerlink" title="ClassPathXmlApplicationContext(“ioc.xml”)的创建过程"></a>ClassPathXmlApplicationContext(“ioc.xml”)的创建过程</h3><p>ClassPathXmlApplicationContext的构造方法</p>
+<p>-&gt;ApbstarctApplicationContext的refresh()</p>
+<p>-&gt;ConfigurableListableBeanFactiory beanFactory = obtainFreshBeanFactory();        //解析xml文件，将所有bean的配置信息保存起来</p>
+<p>finshBeanFactoryInitialization(beanFacory)</p>
+<p>-&gt;beanFactory.preInstantiateSingletons();                                                                         //初始化所有单实例bean</p>
+<p>-&gt;DefaultLitableBeanFactory的preInstantiateSingletons();                                             //获取到了所有bean的名字</p>
+<p>-&gt;AbstaractBeanFactory的doGetBean</p>
+<p>-&gt;getSingleton() </p>
+<p>-&gt;DfaultSingletonBeanRegistry.class的getObject方法</p>
+<p>最终保存在一个map中</p>
+<h3 id="ioc-getBean"><a href="#ioc-getBean" class="headerlink" title="ioc.getBean"></a>ioc.getBean</h3><h2 id="aop原理"><a href="#aop原理" class="headerlink" title="aop原理"></a>aop原理</h2><h2 id="springboot自动装配原理"><a href="#springboot自动装配原理" class="headerlink" title="springboot自动装配原理"></a>springboot自动装配原理</h2><p>1.springboot在启动的时候，从类路径下/META-INF/spring.factories获取指定值</p>
+<p>2.将这些自动配置的类导入容器，自动配置就会生效，帮我进行自动配置。</p>
+<p>3容器中很多的xxxAutoConfiguration就是需要的组件</p>
+<p>4有了自动配置类，就用import导入容器中</p>
+<h2 id="Resource和-Autowired"><a href="#Resource和-Autowired" class="headerlink" title="@Resource和@Autowired"></a>@Resource和@Autowired</h2><p>@Autowired</p>
+<p>是spring注解，默认使用类型去匹配，若冲突可以使用@Qualifer指定id</p>
+<p>@Resource、</p>
+<p>是java原生注解，默认按照属性名称作为id去找。</p>
+<h1 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h1><h2 id="和-的区别"><a href="#和-的区别" class="headerlink" title="#{}和${}的区别"></a>#{}和${}的区别</h2><p>#{属性值}:是参数预编译的方式，参数的位置都是用？替代，参数后来都是预编译进去的，安全，不会有sql注入问题</p>
+<p>多参数情况可以使用@Param方法。</p>
+<p>${属性值}:不是参数预编译方式，而是直接和sql语句拼串，不安全。</p>
+<p>可以用于动态获取表名</p>
+<h1 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h1><h2 id="事务隔离级别："><a href="#事务隔离级别：" class="headerlink" title="事务隔离级别："></a>事务隔离级别：</h2><p>•     事务的隔离级别决定了事务之间可见的级别。</p>
+<p>•     当多个客户端并发地访问同一个表时，可能出现下面的一致性问题：</p>
+<p>–     脏读取（Dirty Read）</p>
+<p>​     一个事务开始读取了某行数据，但是另外一个事务已经更新了此数据但没有能够及时提交，这就出现了脏读取。</p>
+<p>–     不可重复读（Non-repeatable Read） </p>
+<p>​     在同一个事务中，同一个读操作对同一个数据的前后两次读取产生了不同的结果，这就是不可重复读。</p>
+<p>–     幻像读（Phantom Read）</p>
+<p>​     幻像读是指在同一个事务中以前没有的行，由于其他事务的提交而出现的新行。</p>
+<h2 id="四个隔离级别："><a href="#四个隔离级别：" class="headerlink" title="四个隔离级别："></a>四个隔离级别：</h2><p>第一级别：读未提交<br>对方事务还未提交，我们当前事务可以读取到对方未提交的数据<br>读未提交存在脏读现象，表示读到到了脏的数据/</p>
+<p>第二级别：读已提交<br>对方事务提交之后的数据我方可以读到。<br>但是不可重复读</p>
+<p>第三级别：可重复读<br>解决了不可重复读问题</p>
+<p>第四级别：序列化读/串行化读<br>解决了所有问题，<br>效率低，摇排队</p>
+<p>oracle默认读已提交<br>mysql默认可重复读</p>
+<h2 id="事务具有四个特征ACID"><a href="#事务具有四个特征ACID" class="headerlink" title="事务具有四个特征ACID"></a>事务具有四个特征ACID</h2><p>a)     原子性（Atomicity）</p>
+<p>整个事务中的所有操作，必须作为一个单元全部完成（或全部取消）。</p>
+<p>b)    一致性（Consistency）</p>
+<p>在事务开始之前与结束之后，数据库都保持一致状态。</p>
+<p>c)     隔离性(Isolation)</p>
+<p>一个事务不会影响其他事务的运行。</p>
+<p>d)    持久性(Durability)</p>
+<p>在事务完成以后，该事务对数据库所作的更改将持久地保存在数据库之中，并不会被回滚。</p>
 ]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
       <tags>
-        <tag>网站搭建</tag>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -456,7 +280,7 @@
 <tbody><tr>
 <td>1001</td>
 <td>张三</td>
-<td><a href="mailto:&#122;&#x73;&#64;&#103;&#x6d;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#122;&#x73;&#64;&#103;&#x6d;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;</a>,1359999999</td>
+<td><a href="mailto:&#122;&#x73;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;">&#122;&#x73;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;</a>,1359999999</td>
 </tr>
 <tr>
 <td>1002</td>
@@ -466,7 +290,7 @@
 <tr>
 <td>1001</td>
 <td>王五</td>
-<td><a href="mailto:&#119;&#x77;&#64;&#49;&#54;&#x33;&#46;&#x6e;&#101;&#116;">&#119;&#x77;&#64;&#49;&#54;&#x33;&#46;&#x6e;&#101;&#116;</a>,13488888888</td>
+<td><a href="mailto:&#x77;&#x77;&#64;&#x31;&#x36;&#51;&#x2e;&#x6e;&#x65;&#x74;">&#x77;&#x77;&#64;&#x31;&#x36;&#51;&#x2e;&#x6e;&#x65;&#x74;</a>,13488888888</td>
 </tr>
 </tbody></table>
 <p>存在问题：</p>
@@ -484,7 +308,7 @@
 <tbody><tr>
 <td>1001</td>
 <td>张三</td>
-<td><a href="mailto:&#122;&#115;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#x6f;&#109;">&#122;&#115;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#x6f;&#109;</a></td>
+<td><a href="mailto:&#x7a;&#115;&#64;&#x67;&#109;&#x61;&#105;&#108;&#46;&#99;&#111;&#x6d;">&#x7a;&#115;&#64;&#x67;&#109;&#x61;&#105;&#108;&#46;&#99;&#111;&#x6d;</a></td>
 <td>1359999999</td>
 </tr>
 <tr>
@@ -763,6 +587,273 @@
       </categories>
       <tags>
         <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo搭建个人博客</title>
+    <url>/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>用一下他人的hexo搭建过程方便需要时查阅，已表明出处。</p>
+<span id="more"></span>
+
+<h3 id="搭建环境准备"><a href="#搭建环境准备" class="headerlink" title="搭建环境准备"></a>搭建环境准备</h3><p>大概可以分为以下三步</p>
+<ul>
+<li>Node.js 的安装和准备</li>
+<li>git的安装和准备</li>
+<li>gitHub账户的配置</li>
+</ul>
+<h4 id="配置Node-js环境"><a href="#配置Node-js环境" class="headerlink" title="配置Node.js环境"></a>配置Node.js环境</h4><ol>
+<li><p>下载Node.js安装文件：  <a href="http://nodejs.cn/">nodejs中国官网</a>  <a href="https://nodejs.org/en/">nodejs官网</a>  根据自己的Windows版本选择相应的安装文件。 如图所示：  </p>
+<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/1" alt="img"></p>
+<p>image</p>
+<p>保持默认设置即可，一路Next，安装很快就结束了。 然后我们检查一下是不是要求的组件都安装好了，同时按下Win和R，打开运行窗口：  Windows的运行界面  </p>
+<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/2" alt="img"></p>
+<p>image</p>
+<p>在新打开的窗口中输入cmd，敲击回车，打开命令行界面。（下文将直接用打开命令行来表示以上操作，记住哦~） 在打开的命令行界面中，输入</p>
+</li>
+</ol>
+<p>node -v<br> npm -v</p>
+<p>如果结果如下图所示，则说明安装正确，可以进行下一步了，如果不正确，则需要回头检查自己的安装过程。  [图片上传失败…(image-aae4c5-1546580871476)]</p>
+<h4 id="配置Git环境"><a href="#配置Git环境" class="headerlink" title="配置Git环境"></a>配置Git环境</h4><p>下载Git安装文件：  <a href="https://git-scm.com/downloads">GIt官网下载地址：</a>  <a href="https://github.com/git-for-windows/git/releases/download/v2.16.2.windows.1/Git-2.16.2-64-bit.exe">Git-2.16.2-64-bit.exe</a>  然后就进入了Git的安装界面，如图：  </p>
+<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/3" alt="img"></p>
+<p>image</p>
+<p>和Node.js一样，大部分设置都只需要保持默认.  一样的，我们来检查一下Git是不是安装正确了，打开命令行，输入：</p>
+<p>git –version</p>
+<p>如果结果如下图所示，则说明安装正确，可以进行下一步了，如果不正确，则需要回头检查自己的安装过程。  [图片上传失败…(image-8ad417-1546580871476)]</p>
+<h4 id="coding账户的注册和配置"><a href="#coding账户的注册和配置" class="headerlink" title="coding账户的注册和配置"></a>coding账户的注册和配置</h4><p>国内的网站，绝大部分都是中文的，注册什么的就不说了,进入<em>Coding</em> 滚键盘就是了= =</p>
+<h5 id="创建项目-Coding-Pages"><a href="#创建项目-Coding-Pages" class="headerlink" title="创建项目(Coding Pages)"></a>创建项目(Coding Pages)</h5><p>注册之后进入主页，点击项目，点击 *+*，项目名为你的用户名  查看Pages 服务是否开启：点击项目 -&gt; 代码 -&gt; Pages 服务，若没有开启则点开启</p>
+<h5 id="配置SSH与Git"><a href="#配置SSH与Git" class="headerlink" title="配置SSH与Git"></a>配置SSH与Git</h5><p>那么我们有了免费的服务器之后，就要绑定个人电脑与它们联系，那就是<strong>SSH</strong>与<strong>Git</strong>  绑定之后我们每次部署项目就不用输入帐号和密码</p>
+<h5 id="生成SSH-Key"><a href="#生成SSH-Key" class="headerlink" title="生成SSH Key"></a>生成SSH Key</h5><p>ssh-keygen -t rsa -C <a href="mailto:your_email@youremail.com">your_email@youremail.com</a></p>
+<p>后面的 <code>your_email@youremail.com</code> 改为你的邮箱，之后会要求确认路径和输入密码，我们这使用默认的一路回车就行。成功的话会在~/下生成 <code>.ssh</code> 文件夹，进去，打开 <code>id_rsa.pub</code>，复制里面的key，粗暴点就是 Ctrl+a 然后 Ctrl+c</p>
+<h5 id="添加SSH-Key"><a href="#添加SSH-Key" class="headerlink" title="添加SSH Key"></a>添加SSH Key</h5><p>Coding，登录进入主页，点击 <code>账户</code> —&gt; <code>SSH公钥</code> —&gt; 输入key再点击 <code>添加</code></p>
+<h5 id="验证成功与否"><a href="#验证成功与否" class="headerlink" title="验证成功与否"></a>验证成功与否</h5><p>验证coding</p>
+<p>ssh -T <a href="mailto:git@git.coding.net">git@git.coding.net</a><br> 如果是第一次的会提示是否continue，输入<strong>yes</strong>就会看到：You’ve successfully authenticated, but coding does not provide shell access 。这就表示已成功连上coding!  接下来我们要做的就是把本地仓库传到coding上去，在此之前还需要设置username和email，因为coding每次commit都会记录他们</p>
+<p>git config –global user.name your name<br> git config –global <a href="http://user.email/">user.email</a> <a href="mailto:your_email@youremail.com">your_email@youremail.com</a></p>
+<h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h4><p>在自己认为合适的地方创建一个文件夹，这里我以E：/hexo 为例子讲解，首先在E盘目录下创建Hexo文件夹，并在命令行的窗口进入到该目录  </p>
+<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/4" alt="img"></p>
+<p>image</p>
+<p>在命令行中输入：</p>
+<p>npm install hexo-cli -g</p>
+<p>然后你将会看到:  </p>
+<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/5" alt="img"></p>
+<p>image</p>
+<p>可能你会看到一个WARN，但是不用担心，这不会影响你的正常使用。  下面我们来看一看Hexo是不是已经安装好了。 在命令行中输入：<br> hexo -v</p>
+<p>如果你看到了如图文字，则说明已经安装成功了。  </p>
+<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/6" alt="img"></p>
+<p>image</p>
+<h3 id="hexo的相关配置"><a href="#hexo的相关配置" class="headerlink" title="hexo的相关配置"></a>hexo的相关配置</h3><p><strong>初始化Hexo</strong>  我们使用<code>cd</code>命令换到你喜欢的地址，接着上面的操作，输入：</p>
+<p>hexo init</p>
+<p>然后输入：</p>
+<p>npm install</p>
+<p>之后npm将会自动安装你需要的组件，只需要等待npm操作即可。  <strong>首次体验Hexo</strong>  继续操作，同样是在命令行中，输入：</p>
+<p>hexo g</p>
+<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/7" alt="img"></p>
+<p>image</p>
+<p>然后输入：</p>
+<p>hexo s</p>
+<p>然后会提示：  INFO Hexo is running at <a href="https://0.0.0.0:4000/">https://0.0.0.0:4000/</a>. Press Ctrl+C to stop.  在浏览器中打开<a href="https://localhost:4000/%EF%BC%8C%E4%BD%A0%E5%B0%86%E4%BC%9A%E7%9C%8B%E5%88%B0%EF%BC%9A">https://localhost:4000/，你将会看到：</a>  </p>
+<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/8" alt="img"></p>
+<p>image</p>
+<p>目前为止，Hexo在本地的配置已经全都结束了。  <strong>坑</strong> 执行hexo server提示找不到该指令  解决办法：在Hexo 3.0 后server被单独出来了，需要安装server，安装的命令如下：</p>
+<p>sudo npm install hexo-server<br> 或者<br> npm install hexo -server –save</p>
+<h3 id="怎样将Hexo与coding-page-联系起来"><a href="#怎样将Hexo与coding-page-联系起来" class="headerlink" title="怎样将Hexo与coding page 联系起来"></a>怎样将Hexo与coding page 联系起来</h3><p><strong>配置Deployment</strong>  在此之前，先安装<strong>Git部署插件</strong></p>
+<p>npm install hexo-deployer-git –save</p>
+<p>在你博客文件夹下<code>_config.yml</code>文件中，找到<code>Deploy</code>，然后按照如下修改：</p>
+<p>deploy:<br> type: git<br> repo: <a href="mailto:git@coding.net">git@coding.net</a>:yourname/<a href="http://yourname.coding.me.git/">yourname.coding.me.git</a><br> branch: master</p>
+<p>比如我的仓库的地址是<a href="mailto:git@coding.net">git@coding.net</a>:valex/valext.coding.me.git,master，所以配置如下</p>
+<p>Deployment<br> Docs: <a href="https://hexo.io/docs/deployment.html">https://hexo.io/docs/deployment.html</a><br> deploy:<br> type: git<br> repo: <a href="mailto:git@coding.net">git@coding.net</a>:valex/<a href="http://valext.coding.me.git,master/">valext.coding.me.git,master</a></p>
+<h3 id="写博客、发布文章"><a href="#写博客、发布文章" class="headerlink" title="写博客、发布文章"></a>写博客、发布文章</h3><p>新建一篇博客，执行下面的命令：</p>
+<p>hexo new post “article title”</p>
+<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/9" alt="img"></p>
+<p>image</p>
+<p>这时候在你的电脑的目录下<code>:\hexo\source\ _posts</code>将会看到<code>article title.md</code>文件  用MarDown编辑器打开就可以编辑文章了。文章编辑好之后，运行生成、部署命令：</p>
+<p>hexo g   // 生成<br> hexo d   // 部署</p>
+<p>当然你也可以执行下面的命令，相当于上面两条命令的效果</p>
+<p>hexo g -d #在部署前先生成</p>
+<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/10" alt="img"></p>
+<p>image</p>
+<p>部署成功后访问 你的地址，<a href="https://yourname.coding.me/">httpss://yourName.coding.me</a>,将可以看到生成的文章。  <strong>踩坑提醒</strong></p>
+<ul>
+<li>1）注意需要提前安装一个扩展：</li>
+</ul>
+<p>npm install hexo-deployer-git –save</p>
+<p><strong>如果没有执行者行命令，将会提醒</strong></p>
+<blockquote>
+<p>deloyer not found:git</p>
+</blockquote>
+<ul>
+<li><p>2）如果出现下面这样的错误，</p>
+<blockquote>
+<p>Permission denied (publickey).  fatal: Could not read from remote repository.  Please make sure you have the correct access rights  and the repository exists.</p>
+</blockquote>
+</li>
+</ul>
+<p>则是因为没有设置好public key所致。</p>
+<h3 id="主题推荐"><a href="#主题推荐" class="headerlink" title="主题推荐"></a>主题推荐</h3><p>每个不同的主题会需要不同的配置，主题配置文件在主题目录下的_config.yml。有几个比较好的主题推荐给大家。Yilia 是为 hexo 2.4+制作的主题。 崇尚简约优雅，以及极致的性能。 </p>
+<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/11" alt="img"></p>
+<p>image</p>
+<p><a href="https://litten.github.io/">Yilia地址</a>  <strong>NexT</strong> 我的网站就是采用这个主题，简洁美观。 目前Github上Star最高的Hexo主题，支持几种不同的风格。 作者提供了非常完善的配置说明。 </p>
+<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/12" alt="img"></p>
+<p>image</p>
+<p><a href="https://github.com/iissnan/hexo-theme-next">next地址</a>  Pacman是一款为<a href="https://zespia.tw/hexo/">Hexo</a>打造的一款扁平化，有着响应式设计的主题。  [图片上传失败…(image-5179ff-1546580871471)]</p>
+<p><a href="https://github.com/A-limon/pacman">pacman地址</a></p>
+<h3 id="主题使用教程"><a href="#主题使用教程" class="headerlink" title="主题使用教程"></a>主题使用教程</h3><p><a href="https://hexo.io/zh-cn/">Hexo</a> 是高效的静态站点生成框架，她基于 <a href="https://nodejs.org/">Node.js</a>。 通过 Hexo 你可以轻松地使用 Markdown 编写文章，除了 Markdown 本身的语法之外，还可以使用 Hexo 提供的 <a href="https://hexo.io/zh-cn/docs/tag-plugins.html">标签插件</a> 来快速的插入特定形式的内容。在这篇文章中，假定你已经成功安装了 Hexo，并使用 Hexo 提供的命令创建了一个站点。  你可以访问 <a href="https://hexo.io/zh-cn/docs/">Hexo 的文档</a> 了解如何安装 Hexo  在 Hexo 中有两份主要的配置文件，其名称都是 <code>_config.yml</code>。 其中，一份位于站点根目录下，主要包含 Hexo 本身的配置；另一份位于主题目录下，这份配置由主题作者提供，主要用于配置主题相关的选项。  为了描述方便，在以下说明中，将前者称为<strong>站点配置</strong>文件， 后者称为<strong>主题配置</strong>文件。</p>
+<h4 id="安装-NexT"><a href="#安装-NexT" class="headerlink" title="安装 NexT"></a>安装 NexT</h4><p>Hexo 安装主题的方式非常简单，只需要将主题文件拷贝至站点目录的 <code>themes</code> 目录下， 然后修改下配置文件即可。具体到 NexT 来说，安装步骤如下。</p>
+<h4 id="下载主题"><a href="#下载主题" class="headerlink" title="下载主题"></a>下载主题</h4><p>如果你熟悉 <a href="https://git-scm.com/">Git</a>， 建议你使用 克隆最新版本 的方式，之后的更新可以通过 <code>git pull</code> 来快速更新， 而不用再次下载压缩包替换。</p>
+<ul>
+<li><a href="https://theme-next.iissnan.com/getting-started.html#clone">克隆最新版本</a></li>
+<li><a href="https://theme-next.iissnan.com/getting-started.html#stable">下载稳定版本</a>  在终端窗口下，定位到 Hexo 站点目录下。使用 <code>Git</code> checkout 代码：</li>
+</ul>
+<p><img src="https://math.jianshu.com/math?formula=cd%20your-hexo-site" alt="cd your-hexo-site"> git clone <a href="https://github.com/iissnan/hexo-theme-next">https://github.com/iissnan/hexo-theme-next</a> themes/next</p>
+<h4 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h4><p>与所有 Hexo 主题启用的模式一样。 当 克隆/下载 完成后，打开 站点配置文件， 找到 <code>theme</code> 字段，并将其值更改为 <code>next</code>。  启用 NexT 主题</p>
+<p>theme: next</p>
+<p>到此，NexT 主题安装完成。下一步我们将验证主题是否正确启用。在切换主题之后、验证之前， 我们最好使用 <code>hexo clean</code> 来清除 Hexo 的缓存。  <strong>注意</strong> ：这里以后的配置都需要在前面加上空格</p>
+<h4 id="验证主题"><a href="#验证主题" class="headerlink" title="验证主题"></a>验证主题</h4><p>首先启动 Hexo 本地站点，并开启调试模式（即加上 <code>--debug</code>），整个命令是 <code>hexo s --debug</code>。 在服务启动的过程，注意观察命令行输出是否有任何异常信息，如果你碰到问题，这些信息将帮助他人更好的定位错误。 当命令行输出中提示出：</p>
+<p>INFO  Hexo is running at <a href="https://0.0.0.0:4000/">https://0.0.0.0:4000/</a>. Press Ctrl+C to stop.</p>
+<p>此时即可使用浏览器访问 <code>https://localhost:4000</code>，检查站点是否正确运行。  当你看到站点的外观与下图所示类似时即说明你已成功安装 NexT 主题。这是 NexT 默认的 Scheme —— Muse  </p>
+<p><img src="/2021/08/15/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/13" alt="img"></p>
+<p>image</p>
+<p>现在，你已经成功安装并启用了 NexT 主题。下一步我们将要更改一些主题的设定，包括个性化以及集成第三方服务。</p>
+<h4 id="主题设定"><a href="#主题设定" class="headerlink" title="主题设定"></a>主题设定</h4><h5 id="选择-Scheme"><a href="#选择-Scheme" class="headerlink" title="选择 Scheme"></a>选择 Scheme</h5><p>Scheme 是 NexT 提供的一种特性，借助于 Scheme，NexT 为你提供多种不同的外观。同时，几乎所有的配置都可以 在 Scheme 之间共用。目前 NexT 支持三种 Scheme，他们是：</p>
+<ul>
+<li>Muse - 默认 Scheme，这是 NexT 最初的版本，黑白主调，大量留白</li>
+<li>Mist - Muse 的紧凑版本，整洁有序的单栏外观</li>
+<li>Pisces - 双栏 Scheme，小家碧玉似的清新  Scheme 的切换通过更改 主题配置文件，搜索 scheme 关键字。 你会看到有三行 scheme 的配置，将你需用启用的 scheme 前面注释 <code>#</code> 去除即可。  选择 Pisces Scheme</li>
+</ul>
+<h1 id="scheme-Muse"><a href="#scheme-Muse" class="headerlink" title="scheme: Muse"></a>scheme: Muse</h1><h1 id="scheme-Mist"><a href="#scheme-Mist" class="headerlink" title="scheme: Mist"></a>scheme: Mist</h1><p>scheme: Pisces</p>
+<h5 id="设置-语言"><a href="#设置-语言" class="headerlink" title="设置 语言"></a>设置 语言</h5><p>编辑 站点配置文件， 将 <code>language</code> 设置成你所需要的语言。建议明确设置你所需要的语言，例如选用简体中文，配置如下：</p>
+<p>language: zh-Hans</p>
+<p>目前 NexT 支持的语言如以下表格所示：</p>
+<table>
+<thead>
+<tr>
+<th>语言</th>
+<th>代码</th>
+<th>设定示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>English</td>
+<td><code>en</code></td>
+<td><code>language: en</code></td>
+</tr>
+<tr>
+<td>简体中文</td>
+<td><code>zh-Hans</code></td>
+<td><code>language: zh-Hans</code></td>
+</tr>
+<tr>
+<td>Français</td>
+<td><code>fr-FR</code></td>
+<td><code>language: fr-FR</code></td>
+</tr>
+<tr>
+<td>Português</td>
+<td><code>pt</code></td>
+<td><code>language: pt</code> or <code>language: pt-BR</code></td>
+</tr>
+<tr>
+<td>繁體中文</td>
+<td><code>zh-hk</code> 或者 <code>zh-tw</code></td>
+<td><code>language: zh-hk</code></td>
+</tr>
+<tr>
+<td>Русский язык</td>
+<td><code>ru</code></td>
+<td><code>language: ru</code></td>
+</tr>
+<tr>
+<td>Deutsch</td>
+<td><code>de</code></td>
+<td><code>language: de</code></td>
+</tr>
+<tr>
+<td>日本語</td>
+<td><code>ja</code></td>
+<td><code>language: ja</code></td>
+</tr>
+<tr>
+<td>Indonesian</td>
+<td><code>id</code></td>
+<td><code>language: id</code></td>
+</tr>
+<tr>
+<td>Korean</td>
+<td><code>ko</code></td>
+<td><code>language: ko</code></td>
+</tr>
+</tbody></table>
+<h5 id="设置-菜单"><a href="#设置-菜单" class="headerlink" title="设置 菜单"></a>设置 菜单</h5><p><strong>菜单配置</strong> 包括三个部分，第一是菜单项（名称和链接），第二是菜单项的显示文本，第三是菜单项对应的图标。 NexT 使用的是 <a href="https://fontawesome.io/">Font Awesome</a> 提供的图标， Font Awesome 提供了 600+ 的图标，可以满足绝大的多数的场景，同时无须担心在 Retina 屏幕下 图标模糊的问题。  编辑 <strong>主题配置</strong> 文件，修改以下内容：</p>
+<ol>
+<li>设定菜单内容，对应的字段是 <code>menu</code>。 菜单内容的设置格式是：<code>item name: link</code>。其中 <code>item name</code>是一个名称，这个名称并不直接显示在页面上，她将用于匹配图标以及翻译。  菜单示例配置</li>
+</ol>
+<p>menu:<br> home: /<br> archives: /archives<br> #about: /about<br> #categories: /categories<br> tags: /tags<br> #commonweal: /404.html</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">若你的站点运行在子目录中，请将链接前缀的 <span class="string">`/`</span> 去掉</span><br><span class="line"></span><br><span class="line">NexT 默认的菜单项有（标注 的项表示需要手动创建这个页面）：</span><br><span class="line"></span><br><span class="line"><span class="params">| 键值 |</span> 设定值 <span class="params">| 显示文本（简体中文） |</span></span><br><span class="line"><span class="params">| --- |</span> --- <span class="params">| --- |</span></span><br><span class="line"><span class="params">| home |</span> <span class="string">`home: /`</span> <span class="params">| 主页 |</span></span><br><span class="line"><span class="params">| archives |</span> <span class="string">`archives: /archives`</span> <span class="params">| 归档页 |</span></span><br><span class="line"><span class="params">| categories |</span> <span class="string">`categories: /categories`</span> <span class="params">| 分类页 |</span></span><br><span class="line"><span class="params">| tags |</span> <span class="string">`tags: /tags`</span> <span class="params">| 标签页 |</span></span><br><span class="line"><span class="params">| about |</span> <span class="string">`about: /about`</span> <span class="params">| 关于页面 |</span></span><br><span class="line"><span class="params">| commonweal |</span> <span class="string">`commonweal: /404.html`</span> <span class="params">| 公益 404 |</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>设置菜单项的显示文本。在第一步中设置的菜单的名称并不直接用于界面上的展示。Hexo 在生成的时候将使用 这个名称查找对应的语言翻译，并提取显示文本。这些翻译文本放置在 NexT 主题目录下的 <code>languages/&#123;language&#125;.yml</code>（<code>&#123;language&#125;</code> 为你所使用的语言）。</p>
+<p>以简体中文为例，若你需要添加一个菜单项，比如 <code>something</code>。那么就需要修改简体中文对应的翻译文件<code>languages/zh-Hans.yml</code>，在 <code>menu</code> 字段下添加一项：</p>
+<pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang contenteditable="true" cid="n206" mdtype="fences" style="box-sizing: border-box; overflow: visible; font-family: var(--monospace); font-size: 0.9em; display: block; break-inside: avoid; text-align: left; white-space: normal; background-image: inherit; background-position: inherit; background-size: inherit; background-repeat: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: rgb(248, 248, 248); position: relative !important; border: 1px solid rgb(231, 234, 237); border-radius: 3px; padding: 8px 1em 6px; margin-bottom: 15px; margin-top: 15px; width: inherit;">menu: home: 首页 archives: 归档 categories: 分类 tags: 标签 about: 关于 search: 搜索 commonweal: 公益404 something: 有料</pre></li>
+<li><p>设定菜单项的图标，对应的字段是 <code>menu_icons</code>。 此设定格式是 <code>item name: icon name</code>，其中 <code>item name</code> 与上一步所配置的菜单名字对应，<code>icon name</code> 是 Font Awesome 图标的 名字。而 <code>enable</code> 可用于控制是否显示图标，你可以设置成 <code>false</code> 来去掉图标。</p>
+<p>菜单图标配置示例</p>
+</li>
+</ol>
+<p>menu_icons:<br> enable: true<br> # Icon Mapping.<br> home: home<br> about: user<br> categories: th<br> tags: tags<br> archives: archive<br> commonweal: heartbeat</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">在菜单图标开启的情况下，如果菜单项与菜单未匹配（没有设置或者无效的 Font Awesome 图标名字） 的情况下，NexT 将会使用 作为图标。</span><br><span class="line"></span><br><span class="line">请注意键值（如 <span class="string">`home`</span>）的大小写要严格匹配</span><br></pre></td></tr></table></figure>
+
+<h5 id="设置-侧栏"><a href="#设置-侧栏" class="headerlink" title="设置 侧栏"></a>设置 侧栏</h5><p>默认情况下，侧栏仅在文章页面（拥有目录列表）时才显示，并放置于右侧位置。 可以通过修改 <strong>主题配置</strong> 文件 中的 <code>sidebar</code> 字段来控制侧栏的行为。侧栏的设置包括两个部分，其一是侧栏的位置， 其二是侧栏显示的时机。</p>
+<ol>
+<li><p>设置侧栏的位置，修改 <code>sidebar.position</code> 的值，支持的选项有：</p>
+<ul>
+<li>left - 靠左放置</li>
+<li>right - 靠右放置</li>
+</ul>
+<p>目前仅 Pisces Scheme 支持 <code>position</code> 配置。影响版本5.0.0及更低版本。</p>
+</li>
+</ol>
+<p>sidebar:<br> position: left</p>
+<ol>
+<li>设置侧栏显示的时机，修改 <code>sidebar.display</code> 的值，支持的选项有：<ul>
+<li><code>post</code> - 默认行为，在文章页面（拥有目录列表）时显示</li>
+<li><code>always</code> - 在所有页面中都显示</li>
+<li><code>hide</code> - 在所有页面中都隐藏（可以手动展开）</li>
+<li><code>remove</code> - 完全移除</li>
+</ul>
+</li>
+</ol>
+<p>sidebar:<br> display: post</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">已知侧栏在 `use motion: false` 的情况下不会展示。 影响版本<span class="number">5.0</span>.<span class="number">0</span>及更低版本。</span><br></pre></td></tr></table></figure>
+
+<h5 id="设置-头像"><a href="#设置-头像" class="headerlink" title="设置 头像"></a>设置 头像</h5><p>编辑 <strong>主题配置</strong> 文件， 修改字段 <code>avatar</code>， 值设置成头像的链接地址。其中，头像的链接地址可以是：</p>
+<table>
+<thead>
+<tr>
+<th>地址</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>完整的互联网 URI</td>
+<td><code>https://example.com/avatar.png</code></td>
+</tr>
+<tr>
+<td>站点内的地址</td>
+<td>将头像放置主题目录下的 <code>source/uploads/</code> （新建 uploads 目录若不存在） 配置为：<code>avatar: /uploads/avatar.png</code>或者 放置在 <code>source/images/</code> 目录下 配置为：<code>avatar: /images/avatar.png</code></td>
+</tr>
+</tbody></table>
+<p>头像设置示例</p>
+<p>avatar: <a href="https://example.com/avatar.png">https://example.com/avatar.png</a></p>
+<h5 id="设置-作者昵称"><a href="#设置-作者昵称" class="headerlink" title="设置 作者昵称"></a>设置 作者昵称</h5><p>编辑 <strong>站点配置</strong> 文件， 设置 <code>author</code> 为你的昵称。</p>
+<h5 id="站点描述"><a href="#站点描述" class="headerlink" title="站点描述"></a>站点描述</h5><p>编辑 <strong>站点配置文件</strong>， 设置 <code>description</code> 字段为你的站点描述。站点描述可以是你喜欢的一句签名:)</p>
+<p>其他主题的使用参见其他主题github中的readme部分。</p>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p><a href="https://yangbingdong.com/2017/build-blog-hexo-base/#GitHub">https://yangbingdong.com/2017/build-blog-hexo-base/#GitHub</a>  <a href="https://blog.csdn.net/i_am_tomato/article/details/70177019">https://blog.csdn.net/i_am_tomato/article/details/70177019</a>  <a href="https://blog.csdn.net/summer_zmc/article/details/55049906">https://blog.csdn.net/summer_zmc/article/details/55049906</a>  <a href="https://coding.net/help/doc/project/creating-project.html">https://coding.net/help/doc/project/creating-project.html</a>  <a href="https://www.lovebxm.com/2017/05/30/buildBlog/">https://www.lovebxm.com/2017/05/30/buildBlog/</a></p>
+<p><a href="https://theme-next.iissnan.com/getting-started.html">https://theme-next.iissnan.com/getting-started.html</a></p>
+<p>作者：valex<br>链接：<a href="https://www.jianshu.com/p/e0fbc9eed3b2">https://www.jianshu.com/p/e0fbc9eed3b2</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>网站搭建</tag>
       </tags>
   </entry>
   <entry>

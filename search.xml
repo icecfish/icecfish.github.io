@@ -69,7 +69,11 @@
 <p>2被动关闭方收到FIN包后，发送第二个包，其中发送顺序号seq为Z，接受顺序号ack为X+1.</p>
 <p>3被动关闭方在发送第三个包，其中FIN标志位为1，发送顺序号为seq为Y，接受顺序号ack为X。</p>
 <p>4主动关闭方发送第四个包，发送顺序号为X，接受顺序号为Y。</p>
-<h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h1><h2 id="ioc原理"><a href="#ioc原理" class="headerlink" title="ioc原理"></a>ioc原理</h2><h3 id="ClassPathXmlApplicationContext-“ioc-xml”-的创建过程"><a href="#ClassPathXmlApplicationContext-“ioc-xml”-的创建过程" class="headerlink" title="ClassPathXmlApplicationContext(“ioc.xml”)的创建过程"></a>ClassPathXmlApplicationContext(“ioc.xml”)的创建过程</h3><p>ClassPathXmlApplicationContext的构造方法</p>
+<h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h1><h2 id="spring与springmvc与mybatis"><a href="#spring与springmvc与mybatis" class="headerlink" title="spring与springmvc与mybatis"></a>spring与springmvc与mybatis</h2><p>spring是ioc容器，用来管理bean，利用依赖注入实现控制反转，可以很方便的整合各种框架，提供aop机制弥补oop代码重复的问题、更方便将不同类不同方法中的共同处理抽取成切面、自动注入给方法执行。</p>
+<p>springmvc是spring对web框架的一个解决方案，提供了一个总的前端控制器servlet，用来接受请求，然后定义了一套路由策略及是配置型handle，将handle结果使用视图解析器生成视图解析给前端。</p>
+<p>mybatis</p>
+<p>MyBatis 是一款优秀的持久层框架，它支持自定义 SQL、存储过程以及高级映射。MyBatis 免除了几乎所有的 JDBC 代码以及设置参数和获取结果集的工作。MyBatis 可以通过简单的 XML 或注解来配置和映射原始类型、接口和 Java POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。</p>
+<h2 id="ioc原理"><a href="#ioc原理" class="headerlink" title="ioc原理"></a>ioc原理</h2><h3 id="ClassPathXmlApplicationContext-“ioc-xml”-的创建过程"><a href="#ClassPathXmlApplicationContext-“ioc-xml”-的创建过程" class="headerlink" title="ClassPathXmlApplicationContext(“ioc.xml”)的创建过程"></a>ClassPathXmlApplicationContext(“ioc.xml”)的创建过程</h3><p>ClassPathXmlApplicationContext的构造方法</p>
 <p>-&gt;ApbstarctApplicationContext的refresh()</p>
 <p>-&gt;ConfigurableListableBeanFactiory beanFactory = obtainFreshBeanFactory();        //解析xml文件，将所有bean的配置信息保存起来</p>
 <p>finshBeanFactoryInitialization(beanFacory)</p>
@@ -573,7 +577,7 @@
 <tbody><tr>
 <td>1001</td>
 <td>张三</td>
-<td><a href="mailto:&#122;&#x73;&#x40;&#x67;&#x6d;&#97;&#x69;&#108;&#x2e;&#x63;&#x6f;&#109;">&#122;&#x73;&#x40;&#x67;&#x6d;&#97;&#x69;&#108;&#x2e;&#x63;&#x6f;&#109;</a>,1359999999</td>
+<td><a href="mailto:&#122;&#x73;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#111;&#109;">&#122;&#x73;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#111;&#109;</a>,1359999999</td>
 </tr>
 <tr>
 <td>1002</td>
@@ -583,7 +587,7 @@
 <tr>
 <td>1001</td>
 <td>王五</td>
-<td><a href="mailto:&#119;&#x77;&#x40;&#49;&#x36;&#x33;&#46;&#110;&#101;&#x74;">&#119;&#x77;&#x40;&#49;&#x36;&#x33;&#46;&#110;&#101;&#x74;</a>,13488888888</td>
+<td><a href="mailto:&#x77;&#x77;&#x40;&#x31;&#x36;&#51;&#x2e;&#x6e;&#101;&#x74;">&#x77;&#x77;&#x40;&#x31;&#x36;&#51;&#x2e;&#x6e;&#101;&#x74;</a>,13488888888</td>
 </tr>
 </tbody></table>
 <p>存在问题：</p>
@@ -601,7 +605,7 @@
 <tbody><tr>
 <td>1001</td>
 <td>张三</td>
-<td><a href="mailto:&#122;&#x73;&#x40;&#x67;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#122;&#x73;&#x40;&#x67;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d;</a></td>
+<td><a href="mailto:&#x7a;&#x73;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d;">&#x7a;&#x73;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d;</a></td>
 <td>1359999999</td>
 </tr>
 <tr>
